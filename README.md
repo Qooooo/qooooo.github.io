@@ -12,7 +12,7 @@ Senior software engineer with **over 12 years** of experience delivering robust 
 
 Proven ability to bridge the gap between **technical and business teams** by actively participating in **product feature design**, clarifying requirements with clients, and addressing their pain points through **face-to-face meetings and discussions**.
 
-In addition to application development, I have hands-on experience provisioning and maintaining **cloud infrastructure** using **Terraform**, supporting reliable, repeatable, and secure deployments.
+In addition to application development, I also provision and maintain large-scale **cloud infrastructures** using **Terraform**, supporting reliable, repeatable, and secure deployments.
 
 With strong expertise in **DevOps**, **solution architecture**, and **agile delivery**, I'm particularly passionate about crafting optimal **relational database designs** that underpin high-performing applications.
 
