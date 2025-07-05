@@ -123,7 +123,7 @@
 <h1>Software Engineering Concepts Infographics</h1>
 <p>A quick reference cheatsheet for essential software engineering concepts and principles</p>
 <nav>
-  <a href="about.html" class="about-btn">👨🏻‍💻 About Me</a>
+  <a href="about.html" class="about-btn">👨🏻‍💻 About Me 🇸🇬</a>
 </nav>
 </header>
 <main class="container" id="card-container"></main>
@@ -144,27 +144,27 @@
     "icon": "https://img.icons8.com/?size=100&id=D8fI0PGNpq8i&format=png&color=000000",
     "description": "Bundling data (attributes) and methods (functions) that operate on that data within a class, and restricting direct access to some of the object's components.",
     "example": "Example: A class with private fields and public getters/setters.",
-    "counter-example": "Counter-example: Exposing internal state directly without methods.",
+    "counter-example": "Anti-pattern: Exposing internal state directly without methods.",
     "pros": ["Improves modularity", "Protects internal state", "Eases maintenance"],
     "cons": ["Can add boilerplate code", "May reduce flexibility if overused"],
     "details": `<h2>Encapsulation</h2>
       <p>Encapsulation is the practice of bundling data (attributes) and methods (functions) that operate on that data within a class, and restricting direct access to some of the object's components.</p>
-      <ul><li><strong>Example:</strong> A class with private fields and public getters/setters.</li>
-      <li><strong>Counter-example:</strong> Exposing internal state directly without methods.</li></ul>
-      <strong>Pros:</strong><ul><li>Improves modularity</li><li>Protects internal state</li><li>Eases maintenance</li></ul>
-      <strong>Cons:</strong><ul><li>Can add boilerplate code</li><li>May reduce flexibility if overused</li></ul>`
+      <ul><li><strong>✅ Example:</strong> A class with private fields and public getters/setters.</li>
+      <li><strong>❌ Anti-pattern:</strong> Exposing internal state directly without methods.</li></ul>
+      <strong>👍 Pros:</strong><ul><li>👍 Improves modularity</li><li>👍 Protects internal state</li><li>👍 Eases maintenance</li></ul>
+      <strong>👎 Cons:</strong><ul><li>👎 Can add boilerplate code</li><li>👎 May reduce flexibility if overused</li></ul>`
   },
   {
     "id": "polymorphism",
     "title": "Polymorphism",
     "icon": "https://img.icons8.com/ios/100/000000/polyline.png",
     "description": "Ability for different classes to be treated as instances of the same interface. Example: Animal.speak() behaves differently in Dog vs Cat.",
-    "counter-example": "Counter-example: Using type checks and manual dispatch instead of polymorphism.",
+    "counter-example": "Anti-pattern: Using type checks and manual dispatch instead of polymorphism.",
     "pros": ["Enables code reuse", "Simplifies code extension", "Supports flexible design"],
     "cons": ["Can make code harder to trace", "May introduce runtime errors if misused"],
     "details": `<h2>Polymorphism</h2>
       <p>Polymorphism is the ability in object-oriented programming (OOP) for different classes to be treated as instances of the same interface or parent class, allowing for method behavior to be determined dynamically based on the object's actual class.</p>
-      <ul><li><strong>Example:</strong> <br>
+      <ul><li><strong>✅ Example:</strong> <br>
       <em>Animal</em> is an interface (or abstract class) with a <code>speak()</code> method. <em>Cat</em> and <em>Dog</em> are classes that implement the <em>Animal</em> interface and provide their own implementation of <code>speak()</code>.<br>
       A function <code>makeItSpeak(animal: Animal)</code> can accept either a <code>Cat</code> or <code>Dog</code> object at runtime, and will call the correct <code>speak()</code> method depending on the actual object passed in.<br>
       For example:<br>
@@ -176,84 +176,84 @@ makeItSpeak(new Dog()); // Woof!
 makeItSpeak(new Cat()); // Meow!
 </code></pre>
       </li>
-      <li><strong>Counter-example:</strong> Using type checks and manual dispatch instead of polymorphism.</li></ul>
-      <strong>Pros:</strong><ul><li>Enables code reuse</li><li>Simplifies code extension</li><li>Supports flexible design</li></ul>
-      <strong>Cons:</strong><ul><li>Can make code harder to trace</li><li>May introduce runtime errors if misused</li></ul>`
+      <li><strong>❌ Anti-pattern:</strong> Using type checks and manual dispatch instead of polymorphism.</li></ul>
+      <strong>👍 Pros:</strong><ul><li>👍 Enables code reuse</li><li>👍 Simplifies code extension</li><li>👍 Supports flexible design</li></ul>
+      <strong>👎 Cons:</strong><ul><li>👎 Can make code harder to trace</li><li>👎 May introduce runtime errors if misused</li></ul>`
   },
   {
     "id": "solidprinciples",
     "title": "SOLID Principles",
     "icon": "https://img.icons8.com/ios-filled/100/000000/sorting-arrows-horizontal.png",
     "description": "Five principles for maintainable OOP: SRP, OCP, LSP, ISP, DIP. Example: Each class should have one reason to change (SRP).",
-    "counter-example": "Counter-example: A class that handles both data access and UI logic (violates SRP).",
+    "counter-example": "Anti-pattern: A class that handles both data access and UI logic (violates SRP).",
     "pros": ["Improves maintainability", "Encourages separation of concerns", "Facilitates testing"],
     "cons": ["Can increase code complexity", "May require more classes and interfaces"],
     "details": `<h2>SOLID Principles</h2>
       <p>Five principles for maintainable OOP: SRP, OCP, LSP, ISP, DIP.</p>
-      <ul><li><strong>Example:</strong> Each class should have one reason to change (SRP).</li>
-      <li><strong>Counter-example:</strong> A class that handles both data access and UI logic (violates SRP).</li></ul>
-      <strong>Pros:</strong><ul><li>Improves maintainability</li><li>Encourages separation of concerns</li><li>Facilitates testing</li></ul>
-      <strong>Cons:</strong><ul><li>Can increase code complexity</li><li>May require more classes and interfaces</li></ul>`
+      <ul><li><strong>✅ Example:</strong> Each class should have one reason to change (SRP).</li>
+      <li><strong>❌ Anti-pattern:</strong> A class that handles both data access and UI logic (violates SRP).</li></ul>
+      <strong>👍 Pros:</strong><ul><li>👍 Improves maintainability</li><li>👍 Encourages separation of concerns</li><li>👍 Facilitates testing</li></ul>
+      <strong>👎 Cons:</strong><ul><li>👎 Can increase code complexity</li><li>👎 May require more classes and interfaces</li></ul>`
   },
   {
     "id": "captheorem",
     "title": "CAP Theorem",
     "icon": "https://img.icons8.com/ios-filled/100/000000/data-in-both-directions.png",
     "description": "In distributed systems, you can only guarantee two of: Consistency, Availability, Partition Tolerance. Example: CP system sacrifices availability during network partition.",
-    "counter-example": "Counter-example: Assuming a distributed system can guarantee all three properties at once.",
+    "counter-example": "Anti-pattern: Assuming a distributed system can guarantee all three properties at once.",
     "pros": ["Clarifies trade-offs in distributed systems", "Guides architecture decisions"],
     "cons": ["Can oversimplify real-world systems", "Not all systems fit neatly into CAP categories"],
     "details": `<h2>CAP Theorem</h2>
       <p>In distributed systems, you can only guarantee two of: Consistency, Availability, Partition Tolerance.</p>
-      <ul><li><strong>Example:</strong> CP system sacrifices availability during network partition.</li>
-      <li><strong>Counter-example:</strong> Assuming a distributed system can guarantee all three properties at once.</li></ul>
-      <strong>Pros:</strong><ul><li>Clarifies trade-offs in distributed systems</li><li>Guides architecture decisions</li></ul>
-      <strong>Cons:</strong><ul><li>Can oversimplify real-world systems</li><li>Not all systems fit neatly into CAP categories</li></ul>`
+      <ul><li><strong>✅ Example:</strong> CP system sacrifices availability during network partition.</li>
+      <li><strong>❌ Anti-pattern:</strong> Assuming a distributed system can guarantee all three properties at once.</li></ul>
+      <strong>👍 Pros:</strong><ul><li>👍 Clarifies trade-offs in distributed systems</li><li>👍 Guides architecture decisions</li></ul>
+      <strong>👎 Cons:</strong><ul><li>👎 Can oversimplify real-world systems</li><li>👎 Not all systems fit neatly into CAP categories</li></ul>`
   },
   {
     "id": "inheritance",
     "title": "Inheritance",
     "icon": "https://img.icons8.com/ios-filled/100/000000/folder-invoices--v1.png",
     "description": "Mechanism to derive new classes from existing ones. Example: `class Car extends Vehicle {}` inherits attributes and methods.",
-    "counter-example": "Counter-example: Copy-pasting code instead of using inheritance.",
+    "counter-example": "Anti-pattern: Copy-pasting code instead of using inheritance.",
     "pros": ["Promotes code reuse", "Simplifies extension of functionality"],
     "cons": ["Can lead to tight coupling", "May cause fragile base class problem"],
     "details": `<h2>Inheritance</h2>
       <p>Mechanism to derive new classes from existing ones.</p>
-      <ul><li><strong>Example:</strong> class Car extends Vehicle {} inherits attributes and methods.</li>
-      <li><strong>Counter-example:</strong> Copy-pasting code instead of using inheritance.</li></ul>
-      <strong>Pros:</strong><ul><li>Promotes code reuse</li><li>Simplifies extension of functionality</li></ul>
-      <strong>Cons:</strong><ul><li>Can lead to tight coupling</li><li>May cause fragile base class problem</li></ul>`
+      <ul><li><strong>✅ Example:</strong> class Car extends Vehicle {} inherits attributes and methods.</li>
+      <li><strong>❌ Anti-pattern:</strong> Copy-pasting code instead of using inheritance.</li></ul>
+      <strong>👍 Pros:</strong><ul><li>👍 Promotes code reuse</li><li>👍 Simplifies extension of functionality</li></ul>
+      <strong>👎 Cons:</strong><ul><li>👎 Can lead to tight coupling</li><li>👎 May cause fragile base class problem</li></ul>`
   },
   {
     "id": "microservices",
     "title": "Microservices",
     "icon": "https://img.icons8.com/ios-filled/100/000000/microservices.png",
     "description": "Architectural style that structures an app as a collection of loosely coupled services. Example: User service, order service, and payment service communicate via REST.",
-    "counter-example": "Counter-example: A monolithic application where all logic is in a single codebase.",
+    "counter-example": "Anti-pattern: A monolithic application where all logic is in a single codebase.",
     "pros": ["Enables independent deployment", "Improves scalability", "Facilitates technology diversity"],
     "cons": ["Increases operational complexity", "Requires robust inter-service communication", "Can lead to data consistency challenges"],
     "details": `<h2>Microservices</h2>
       <p>Architectural style that structures an app as a collection of loosely coupled services.</p>
-      <ul><li><strong>Example:</strong> User service, order service, and payment service communicate via REST.</li>
-      <li><strong>Counter-example:</strong> A monolithic application where all logic is in a single codebase.</li></ul>
-      <strong>Pros:</strong><ul><li>Enables independent deployment</li><li>Improves scalability</li><li>Facilitates technology diversity</li></ul>
-      <strong>Cons:</strong><ul><li>Increases operational complexity</li><li>Requires robust inter-service communication</li><li>Can lead to data consistency challenges</li></ul>`
+      <ul><li><strong>✅ Example:</strong> User service, order service, and payment service communicate via REST.</li>
+      <li><strong>❌ Anti-pattern:</strong> A monolithic application where all logic is in a single codebase.</li></ul>
+      <strong>👍 Pros:</strong><ul><li>👍 Enables independent deployment</li><li>👍 Improves scalability</li><li>👍 Facilitates technology diversity</li></ul>
+      <strong>👎 Cons:</strong><ul><li>👎 Increases operational complexity</li><li>👎 Requires robust inter-service communication</li><li>👎 Can lead to data consistency challenges</li></ul>`
   },
   {
     "id": "domaindrivendesignddd",
     "title": "Domain-Driven Design (DDD)",
     "icon": "https://img.icons8.com/ios-filled/100/000000/domain.png",
     "description": "Focuses on modeling software to match a domain's logic. Example: Bounded Contexts and Ubiquitous Language in large applications.",
-    "counter-example": "Counter-example: Designing software without input from domain experts.",
+    "counter-example": "Anti-pattern: Designing software without input from domain experts.",
     "pros": ["Aligns software with business needs", "Improves communication between developers and stakeholders"],
     "cons": ["Can be complex to implement", "Requires significant domain knowledge"],
     "details": `<h2>Domain-Driven Design (DDD)</h2>
       <p>Focuses on modeling software to match a domain's logic.</p>
-      <ul><li><strong>Example:</strong> Bounded Contexts and Ubiquitous Language in large applications.</li>
-      <li><strong>Counter-example:</strong> Designing software without input from domain experts.</li></ul>
-      <strong>Pros:</strong><ul><li>Aligns software with business needs</li><li>Improves communication between developers and stakeholders</li></ul>
-      <strong>Cons:</strong><ul><li>Can be complex to implement</li><li>Requires significant domain knowledge</li></ul>`
+      <ul><li><strong>✅ Example:</strong> Bounded Contexts and Ubiquitous Language in large applications.</li>
+      <li><strong>❌ Anti-pattern:</strong> Designing software without input from domain experts.</li></ul>
+      <strong>👍 Pros:</strong><ul><li>👍 Aligns software with business needs</li><li>👍 Improves communication between developers and stakeholders</li></ul>
+      <strong>👎 Cons:</strong><ul><li>👎 Can be complex to implement</li><li>👎 Requires significant domain knowledge</li></ul>`
   }
 ];
 
@@ -378,10 +378,10 @@ makeItSpeak(new Cat()); // Meow!
     modalBody.innerHTML = `
       <h2>${p.title}</h2>
       <p>${p.description}</p>
-      <ul><li><strong>Example:</strong> ${p.example}</li>
-      <li><strong>Counter-example:</strong> ${p.counterExample}</li></ul>
-      <strong>Pros:</strong><ul>${p.pros.map(pr => `<li>${pr}</li>`).join('')}</ul>
-      <strong>Cons:</strong><ul>${p.cons.map(co => `<li>${co}</li>`).join('')}</ul>
+      <ul><li><strong>✅ Example:</strong> ${p.example}</li>
+      <li><strong>❌ Anti-pattern:</strong> ${p.counterExample}</li></ul>
+      <strong>👍 Pros:</strong><ul>${p.pros.map(pr => `<li>👍 ${pr}</li>`).join('')}</ul>
+      <strong>👎 Cons:</strong><ul>${p.cons.map(co => `<li>👎 ${co}</li>`).join('')}</ul>
       <button onclick="showModal('solidprinciples')">Back to SOLID Principles</button>
     `;
     modal.style.display = 'flex';
@@ -394,10 +394,10 @@ makeItSpeak(new Cat()); // Meow!
     modalBody.innerHTML = `
       <h2>${s.title}</h2>
       <p>${s.description}</p>
-      <ul><li><strong>Example:</strong> ${s.example}</li>
-      <li><strong>Counter-example:</strong> ${s.counterExample}</li></ul>
-      <strong>Pros:</strong><ul>${s.pros.map(pr => `<li>${pr}</li>`).join('')}</ul>
-      <strong>Cons:</strong><ul>${s.cons.map(co => `<li>${co}</li>`).join('')}</ul>
+      <ul><li><strong>✅ Example:</strong> ${s.example}</li>
+      <li><strong>❌ Anti-pattern:</strong> ${s.counterExample}</li></ul>
+      <strong>👍 Pros:</strong><ul>${s.pros.map(pr => `<li>👍 ${pr}</li>`).join('')}</ul>
+      <strong>👎 Cons:</strong><ul>${s.cons.map(co => `<li>👎 ${co}</li>`).join('')}</ul>
       <button onclick=\"showModal('domaindrivendesignddd')\">Back to DDD</button>
     `;
     modal.style.display = 'flex';
