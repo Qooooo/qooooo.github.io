@@ -2,8 +2,6 @@
 
 **Senior Software Engineer / Technical Lead**
 
-<img src="assets/profile.jpeg" alt="Profile Picture" width="200" height="200" style="border-radius: 50%;">
-
 ---
 
 ## 💼 Professional Summary
@@ -25,12 +23,14 @@ Known for leading **cross-functional teams** and driving **continuous improvemen
 ### Server-Side
 
 - **Web Server:** Python Flask, Express.js, Nginx, Uvicorn
-- **Frameworks:** FastAPI, Node.js, Pydantic
-- **API Documentation:** OpenAPI documentation (Compatible with Swagger Editor), Postman Collections
-- **Languages:** Python, JavaScript, TypeScript
+- **Frameworks:** FastAPI, Pydantic
+- **Runtime:** Node.js, Python
+- **API Design:** RESTful APIs, WebSockets
+- **API Documentation:** OpenAPI documentation, Postman Collections
+- **Languages:** Python, TypeScript
 - **Database:** MySQL, MongoDB, Azure SQL Database
 - **ORMs:** Alembic, TypeORM
-- **Testing Frameworks:** Pytest, cypress, Jest, cucumber
+- **Testing Frameworks:** Pytest, Cypress, Jest, Cucumber
 - **Infrastructure as Code:** Terraform
 
 ### Cloud
@@ -51,13 +51,13 @@ Known for leading **cross-functional teams** and driving **continuous improvemen
 
 ### Client-Side
 
-- **Framework:** React
+- **Framework:** React, Next.js
 - **Library:** Redux, Fetch API, Axios, React Router, Lodash
 - **Language:** HTML, JavaScript, CSS
 
 ### Other Skills
 
-- **System Design:** System design, architecture, and documentation
+- **System Design:** System design, cloud architecture, software architecture and documentation
 - **Performance Optimization:** CDN, image compression
 - **Agile Practices:** Scrum, Kanban, XP pair-programming
 - **Product Design:** Collaborated with clients to design and refine product features, ensuring alignment with business goals and user needs.
@@ -72,11 +72,11 @@ Known for leading **cross-functional teams** and driving **continuous improvemen
 
 ### FEB 2021 – PRESENT
 
-**TVS Digital (Singapore)**
+**TVS Digital Pte Ltd (Singapore)**
 
 *Senior Software Engineer / Tech Lead*
 
-- Spearheaded the development and delivery of **12 production-grade web applications** across **4 major product offerings**, serving over **10 clients** across Singapore, Indonesia, the Philippines, and India, while driving **revenue growth** and meeting **delivery milestones** in a fast-paced environment.
+- Spearheaded the development and delivery of **12 production-grade web applications** across **4 products**, serving over **10 clients** across Singapore, Indonesia, the Philippines, and India, while driving **revenue growth** and meeting **delivery milestones** in a fast-paced environment.
 - Designed over **30 relational database schemas** and **24 high-level system context diagrams**, enhancing **client communication** and securing **product and solution buy-ins**, particularly for **complex systems integration**.
 - Engineered and maintained **Azure-based serverless architectures** (Function Apps, App Services) and **CI/CD pipelines**, transitioning from **Azure CI/CD** to a **self-managed deployment pipeline** to enhance **reliability and control** over build processes.
 - Led **infrastructure modernization** by converting over **80% of cloud infrastructure** to **Infrastructure as Code (IaC)** with **Terraform**, cutting **provisioning time** from **2 days to a few hours** and ensuring **consistency, scalability**, and streamlined **maintenance, upgrades, and migrations**.

@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>About Me - Goh Wei Rong</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #e8e8e8;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem 0;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 4px solid #00d4ff;
+            box-shadow: 0 8px 32px rgba(0, 212, 255, 0.3);
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #00d4ff;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #b8b8b8;
+            font-weight: 300;
+        }
+
+        .nav {
+            margin-top: 2rem;
+        }
+
+        .nav a {
+            color: #00d4ff;
+            text-decoration: none;
+            padding: 0.8rem 2rem;
+            border: 2px solid #00d4ff;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .nav a:hover {
+            background: #00d4ff;
+            color: #1a1a2e;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.4);
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        h2 {
+            color: #00d4ff;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid #00d4ff;
+            padding-bottom: 0.5rem;
+        }
+
+        h3 {
+            color: #ffffff;
+            font-size: 1.3rem;
+            margin: 1.5rem 0 1rem 0;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: rgba(0, 212, 255, 0.1);
+            border-radius: 10px;
+            padding: 1.5rem;
+            border-left: 4px solid #00d4ff;
+        }
+
+        .skill-category h4 {
+            color: #00d4ff;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            margin-bottom: 0.5rem;
+            padding-left: 1rem;
+            position: relative;
+        }
+
+        .skill-list li:before {
+            content: "▶";
+            color: #00d4ff;
+            position: absolute;
+            left: 0;
+        }
+
+        .experience-item {
+            background: rgba(0, 212, 255, 0.05);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid #00d4ff;
+        }
+
+        .company {
+            color: #00d4ff;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .position {
+            color: #ffffff;
+            font-style: italic;
+            margin: 0.5rem 0;
+        }
+
+        .duration {
+            color: #b8b8b8;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .achievements {
+            list-style: none;
+        }
+
+        .achievements li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .achievements li:before {
+            content: "✓";
+            color: #00ff88;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, #00d4ff20, #00ff8820);
+            padding: 0.1rem 0.3rem;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: #b8b8b8;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="assets/profile.jpeg" alt="Goh Wei Rong" class="profile-img">
+            <h1>Goh Wei Rong</h1>
+            <p class="subtitle">Senior Software Engineer / Technical Lead</p>
+            <nav class="nav">
+                <a href="index.html">← Back to Portfolio</a>
+            </nav>
+        </header>
+
+        <section class="section">
+            <h2>💼 Professional Summary</h2>
+            <p>Senior software engineer with <span class="highlight">over 12 years</span> of experience delivering robust software solutions, with the last 5 years dedicated to <span class="highlight">cloud-based web applications (Mobile & Desktop)</span>. I specialize in designing <span class="highlight">scalable systems</span> using <span class="highlight">serverless architecture</span>, specifically using <span class="highlight">Microsoft Azure</span> resources (Function Apps, App Services), <span class="highlight">Node.js</span> with <span class="highlight">TypeScript</span>, <span class="highlight">React</span> (CRA and Next.js), and <span class="highlight">relational databases</span> like <span class="highlight">MySQL</span>.</p>
+            
+            <p>Proven ability to bridge the gap between <span class="highlight">technical and business teams</span> by actively participating in <span class="highlight">product feature design</span>, clarifying requirements with clients, and addressing their pain points through <span class="highlight">face-to-face meetings and discussions</span>.</p>
+            
+            <p>In addition to application development, I also provision and maintain large-scale <span class="highlight">cloud infrastructures</span> using <span class="highlight">Terraform</span>, supporting reliable, repeatable, and secure deployments.</p>
+        </section>
+
+        <section class="section">
+            <h2>🛠️ Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h4>Server-Side</h4>
+                    <ul class="skill-list">
+                        <li><strong>Web Servers:</strong> Python Flask, Express.js, Nginx, Uvicorn</li>
+                        <li><strong>Frameworks:</strong> FastAPI, Pydantic</li>
+                        <li><strong>Runtime:</strong> Node.js, Python</li>
+                        <li><strong>Languages:</strong> Python, TypeScript</li>
+                        <li><strong>Databases:</strong> MySQL, MongoDB, Azure SQL Database</li>
+                        <li><strong>ORMs:</strong> Alembic, TypeORM</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h4>Cloud & DevOps</h4>
+                    <ul class="skill-list">
+                        <li><strong>Platforms:</strong> Azure, AWS, GCP</li>
+                        <li><strong>Serverless:</strong> Azure Functions, App Services, AWS Lambda</li>
+                        <li><strong>CI/CD:</strong> Jenkins, Azure Pipelines</li>
+                        <li><strong>IaC:</strong> Terraform</li>
+                        <li><strong>Monitoring:</strong> Grafana, Azure Monitor</li>
+                        <li><strong>Security:</strong> Trivy, SonarQube, Snyk</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h4>Client-Side</h4>
+                    <ul class="skill-list">
+                        <li><strong>Frameworks:</strong> React, Next.js</li>
+                        <li><strong>Libraries:</strong> Redux, Axios, React Router</li>
+                        <li><strong>Languages:</strong> HTML, JavaScript, CSS</li>
+                        <li><strong>Testing:</strong> Cypress, Jest, Cucumber</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h4>Leadership & Process</h4>
+                    <ul class="skill-list">
+                        <li><strong>Methodologies:</strong> Scrum, Kanban, XP</li>
+                        <li><strong>Architecture:</strong> System Design, DDD</li>
+                        <li><strong>Client Engagement:</strong> Requirements Gathering</li>
+                        <li><strong>Team Leadership:</strong> Mentoring, Code Reviews</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🧑‍💼 Work Experience</h2>
+            
+            <div class="experience-item">
+                <div class="company">TVS Digital Pte Ltd (Singapore)</div>
+                <div class="position">Senior Software Engineer / Tech Lead</div>
+                <div class="duration">FEB 2021 – PRESENT</div>
+                <ul class="achievements">
+                    <li>Spearheaded development of <span class="highlight">12 production-grade web applications</span> across 4 products, serving over 10 clients across Southeast Asia</li>
+                    <li>Designed over <span class="highlight">30 relational database schemas</span> and 24 high-level system context diagrams</li>
+                    <li>Led <span class="highlight">infrastructure modernization</span> converting 80% of cloud infrastructure to <span class="highlight">Infrastructure as Code (IaC)</span> with Terraform</li>
+                    <li>Optimized cloud spend, maintaining <span class="highlight">Azure costs 20% below targets</span> despite significant expansion</li>
+                    <li>Enhanced <span class="highlight">image load times by 99%</span> (800ms to 5ms) through CDN integration</li>
+                    <li>Mentored and led a <span class="highlight">5-person engineering team</span></li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="company">ST Engineering Electronics Info-Software Systems</div>
+                <div class="position">Pre-sales / Solutions Engineer</div>
+                <div class="duration">SEP 2020 – FEB 2021</div>
+                <ul class="achievements">
+                    <li>Developed and demonstrated <span class="highlight">DevOps workflow orchestrator</span> bundled in virtual machine</li>
+                    <li>Implemented comprehensive toolchain including <span class="highlight">GitLab, Jenkins, SonarQube, Ansible</span></li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="company">ST Engineering Innosparks</div>
+                <div class="position">Assistant Principal Engineer</div>
+                <div class="duration">AUG 2018 – AUG 2020</div>
+                <ul class="achievements">
+                    <li>Completed <span class="highlight">Agile Certified Practitioner (ACP)</span> certification</li>
+                    <li>Implemented <span class="highlight">Kalman Filtering algorithm</span> achieving 90% smoother GPS trajectory processing</li>
+                    <li>Improved <span class="highlight">object-tracking accuracy by 50%</span> using XP pair-programming</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="company">ST Engineering Electronics Training & Simulation Systems</div>
+                <div class="position">Senior Software Engineer</div>
+                <div class="duration">JUL 2015 – JUL 2018</div>
+                <ul class="achievements">
+                    <li>Served as <span class="highlight">Technical Lead</span> for the company's first overseas project, responsible for planning and co-management of project timeline and deliverables</li>
+                    <li>Led a small team to different parts of <span class="highlight">Vietnam</span> for each delivery phase, overcoming challenges to ensure successful deployments and customer satisfaction</li>
+                    <li>Selected for the <span class="highlight">"Bright Sparks" program</span> among hundreds, where top talents are rotated across business sectors for exposure to different business areas</li>
+                    <li>Recognized for <span class="highlight">dedication to work and potential for growth</span></li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="company">ST Engineering Electronics Training & Simulation Systems</div>
+                <div class="position">Software Engineer</div>
+                <div class="duration">JUN 2013 – JUN 2015</div>
+                <ul class="achievements">
+                    <li>Focused on <span class="highlight">deep tech research and development</span>, particularly in simulation of ship dynamics and naval domain equipment</li>
+                    <li>Pioneered design and development of <span class="highlight">ownship simulation modules</span> enabling successful delivery of at least 3 major projects, amounting to over <span class="highlight">100 million dollars in revenue</span></li>
+                    <li>Built foundational assets that continue to serve as the <span class="highlight">foundation for all simulation projects</span> today</li>
+                    <li>Adopted quality practices including <span class="highlight">peer reviews, branching strategies, and purposeful code commits</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>📂 Personal Projects</h2>
+            
+            <div class="experience-item">
+                <div class="company">📱 Mobile-Focused PWA Application</div>
+                <div class="duration">SEP 2024 - PRESENT</div>
+                <ul class="achievements">
+                    <li>Developed Progressive Web Application for <span class="highlight">stock watchlist management</span> and trade journaling</li>
+                    <li>Integrated <span class="highlight">WebSockets for real-time</span> stock price updates</li>
+                    <li>Built with <span class="highlight">FastAPI, React, and MySQL</span> stack</li>
+                    <li>Implemented <span class="highlight">real-time push notifications</span> for trade alerts</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="company">☁️ Cloud Hosted Services</div>
+                <div class="duration">2019 - 2020</div>
+                <ul class="achievements">
+                  <li>Provisioned and deployed an <span class="highlight">Amazon EC2 instance on AWS</span> hosting a HTTPS server that serves as an endpoint to receive <span class="highlight">webhooks from Facebook</span> and translate that into <span class="highlight">Google Calendar events</span></li>
+                  <li>Provisioned and deployed another <span class="highlight">EC2 instance hosting a Telegram bot</span> that takes orders, makes appointments, creates an entry in <span class="highlight">Google Sheets</span> and a corresponding event in <span class="highlight">Google Calendar</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🎓 Education</h2>
+            <div class="experience-item">
+                <div class="company">Nanyang Technological University</div>
+                <div class="position">Bachelor of Engineering (Information Engineering & Media) with Honors</div>
+                <div class="duration">2010 - 2013</div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>This page showcases my professional journey and technical expertise.<br>
+            Built with HTML, CSS, and hosted on GitHub Pages.</p>
+        </footer>
+    </div>
+</body>
+</html>

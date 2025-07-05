@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Software Engineering Infographics</title>
+<style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    body {
+      margin: 0;
+      background: #f4f6f8;
+      color: #333;
+    }
+    header {
+      background: #1e2a38;
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    nav {
+      margin-top: 1.5rem;
+    }
+    .about-btn {
+      display: inline-block;
+      padding: 0.8rem 2rem;
+      background: linear-gradient(135deg, #3289c6 0%, #299dc4 100%);
+      color: white;
+      text-decoration: none;
+      border-radius: 25px;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+      border: none;
+      cursor: pointer;
+    }
+    .about-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 212, 255, 0.4);
+      background: linear-gradient(135deg, #0099cc 0%, #00d4ff 100%);
+    }
+    .about-btn:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 10px rgba(0, 212, 255, 0.3);
+    }
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+      padding: 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      cursor: pointer;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    }
+    .icon {
+      width: 64px;
+      height: 64px;
+      margin-bottom: 1rem;
+    }
+    .title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: #1e2a38;
+      text-align: center;
+    }
+    .description {
+      font-size: 0.95rem;
+      color: #555;
+      text-align: center;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    .modal-content {
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      width: 90%;
+      max-width: 600px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+    .modal h2 {
+      margin-top: 0;
+    }
+    .close {
+      float: right;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+<header>
+<h1>Software Engineering Concepts Infographics</h1>
+<p>Explore core principles, patterns, and best practices with simple visuals</p>
+<nav>
+  <a href="about.html" class="about-btn">👨‍💻 About Me</a>
+</nav>
+</header>
+<main class="container" id="card-container"></main>
+<div class="modal" id="modal">
+<div class="modal-content">
+<span class="close" onclick="closeModal()">×</span>
+<div id="modal-body"></div>
+</div>
+</div>
+<script>
+    const modal = document.getElementById('modal');
+    const modalBody = document.getElementById('modal-body');
+
+    const concepts = [
+  {
+    "id": "encapsulation",
+    "title": "Encapsulation",
+    "icon": "https://img.icons8.com/?size=100&id=D8fI0PGNpq8i&format=png&color=000000",
+    "description": "Bundling data (attributes) and methods (functions) that operate on that data within a class, and restricting direct access to some of the object's components.",
+    "example": "Example: A class with private fields and public getters/setters.",
+    "counter-example": "Counter-example: Exposing internal state directly without methods.",
+    "pros": ["Improves modularity", "Protects internal state", "Eases maintenance"],
+    "cons": ["Can add boilerplate code", "May reduce flexibility if overused"],
+    "details": `<h2>Encapsulation</h2>
+      <p>Encapsulation is the practice of bundling data (attributes) and methods (functions) that operate on that data within a class, and restricting direct access to some of the object's components.</p>
+      <ul><li><strong>Example:</strong> A class with private fields and public getters/setters.</li>
+      <li><strong>Counter-example:</strong> Exposing internal state directly without methods.</li></ul>
+      <strong>Pros:</strong><ul><li>Improves modularity</li><li>Protects internal state</li><li>Eases maintenance</li></ul>
+      <strong>Cons:</strong><ul><li>Can add boilerplate code</li><li>May reduce flexibility if overused</li></ul>`
+  },
+  {
+    "id": "polymorphism",
+    "title": "Polymorphism",
+    "icon": "https://img.icons8.com/ios/100/000000/polyline.png",
+    "description": "Ability for different classes to be treated as instances of the same interface. Example: Animal.speak() behaves differently in Dog vs Cat.",
+    "counter-example": "Counter-example: Using type checks and manual dispatch instead of polymorphism.",
+    "pros": ["Enables code reuse", "Simplifies code extension", "Supports flexible design"],
+    "cons": ["Can make code harder to trace", "May introduce runtime errors if misused"],
+    "details": `<h2>Polymorphism</h2>
+      <p>Polymorphism is the ability in object-oriented programming (OOP) for different classes to be treated as instances of the same interface or parent class, allowing for method behavior to be determined dynamically based on the object's actual class.</p>
+      <ul><li><strong>Example:</strong> <br>
+      <em>Animal</em> is an interface (or abstract class) with a <code>speak()</code> method. <em>Cat</em> and <em>Dog</em> are classes that implement the <em>Animal</em> interface and provide their own implementation of <code>speak()</code>.<br>
+      A function <code>makeItSpeak(animal: Animal)</code> can accept either a <code>Cat</code> or <code>Dog</code> object at runtime, and will call the correct <code>speak()</code> method depending on the actual object passed in.<br>
+      For example:<br>
+      <pre><code>interface Animal { speak(): void; }
+class Dog implements Animal { speak() { console.log('Woof!'); } }
+class Cat implements Animal { speak() { console.log('Meow!'); } }
+function makeItSpeak(animal: Animal) { animal.speak(); }
+makeItSpeak(new Dog()); // Woof!
+makeItSpeak(new Cat()); // Meow!
+</code></pre>
+      </li>
+      <li><strong>Counter-example:</strong> Using type checks and manual dispatch instead of polymorphism.</li></ul>
+      <strong>Pros:</strong><ul><li>Enables code reuse</li><li>Simplifies code extension</li><li>Supports flexible design</li></ul>
+      <strong>Cons:</strong><ul><li>Can make code harder to trace</li><li>May introduce runtime errors if misused</li></ul>`
+  },
+  {
+    "id": "solidprinciples",
+    "title": "SOLID Principles",
+    "icon": "https://img.icons8.com/ios-filled/100/000000/sorting-arrows-horizontal.png",
+    "description": "Five principles for maintainable OOP: SRP, OCP, LSP, ISP, DIP. Example: Each class should have one reason to change (SRP).",
+    "counter-example": "Counter-example: A class that handles both data access and UI logic (violates SRP).",
+    "pros": ["Improves maintainability", "Encourages separation of concerns", "Facilitates testing"],
+    "cons": ["Can increase code complexity", "May require more classes and interfaces"],
+    "details": `<h2>SOLID Principles</h2>
+      <p>Five principles for maintainable OOP: SRP, OCP, LSP, ISP, DIP.</p>
+      <ul><li><strong>Example:</strong> Each class should have one reason to change (SRP).</li>
+      <li><strong>Counter-example:</strong> A class that handles both data access and UI logic (violates SRP).</li></ul>
+      <strong>Pros:</strong><ul><li>Improves maintainability</li><li>Encourages separation of concerns</li><li>Facilitates testing</li></ul>
+      <strong>Cons:</strong><ul><li>Can increase code complexity</li><li>May require more classes and interfaces</li></ul>`
+  },
+  {
+    "id": "captheorem",
+    "title": "CAP Theorem",
+    "icon": "https://img.icons8.com/ios-filled/100/000000/data-in-both-directions.png",
+    "description": "In distributed systems, you can only guarantee two of: Consistency, Availability, Partition Tolerance. Example: CP system sacrifices availability during network partition.",
+    "counter-example": "Counter-example: Assuming a distributed system can guarantee all three properties at once.",
+    "pros": ["Clarifies trade-offs in distributed systems", "Guides architecture decisions"],
+    "cons": ["Can oversimplify real-world systems", "Not all systems fit neatly into CAP categories"],
+    "details": `<h2>CAP Theorem</h2>
+      <p>In distributed systems, you can only guarantee two of: Consistency, Availability, Partition Tolerance.</p>
+      <ul><li><strong>Example:</strong> CP system sacrifices availability during network partition.</li>
+      <li><strong>Counter-example:</strong> Assuming a distributed system can guarantee all three properties at once.</li></ul>
+      <strong>Pros:</strong><ul><li>Clarifies trade-offs in distributed systems</li><li>Guides architecture decisions</li></ul>
+      <strong>Cons:</strong><ul><li>Can oversimplify real-world systems</li><li>Not all systems fit neatly into CAP categories</li></ul>`
+  },
+  {
+    "id": "inheritance",
+    "title": "Inheritance",
+    "icon": "https://img.icons8.com/ios-filled/100/000000/folder-invoices--v1.png",
+    "description": "Mechanism to derive new classes from existing ones. Example: `class Car extends Vehicle {}` inherits attributes and methods.",
+    "counter-example": "Counter-example: Copy-pasting code instead of using inheritance.",
+    "pros": ["Promotes code reuse", "Simplifies extension of functionality"],
+    "cons": ["Can lead to tight coupling", "May cause fragile base class problem"],
+    "details": `<h2>Inheritance</h2>
+      <p>Mechanism to derive new classes from existing ones.</p>
+      <ul><li><strong>Example:</strong> class Car extends Vehicle {} inherits attributes and methods.</li>
+      <li><strong>Counter-example:</strong> Copy-pasting code instead of using inheritance.</li></ul>
+      <strong>Pros:</strong><ul><li>Promotes code reuse</li><li>Simplifies extension of functionality</li></ul>
+      <strong>Cons:</strong><ul><li>Can lead to tight coupling</li><li>May cause fragile base class problem</li></ul>`
+  },
+  {
+    "id": "microservices",
+    "title": "Microservices",
+    "icon": "https://img.icons8.com/ios-filled/100/000000/microservices.png",
+    "description": "Architectural style that structures an app as a collection of loosely coupled services. Example: User service, order service, and payment service communicate via REST.",
+    "counter-example": "Counter-example: A monolithic application where all logic is in a single codebase.",
+    "pros": ["Enables independent deployment", "Improves scalability", "Facilitates technology diversity"],
+    "cons": ["Increases operational complexity", "Requires robust inter-service communication", "Can lead to data consistency challenges"],
+    "details": `<h2>Microservices</h2>
+      <p>Architectural style that structures an app as a collection of loosely coupled services.</p>
+      <ul><li><strong>Example:</strong> User service, order service, and payment service communicate via REST.</li>
+      <li><strong>Counter-example:</strong> A monolithic application where all logic is in a single codebase.</li></ul>
+      <strong>Pros:</strong><ul><li>Enables independent deployment</li><li>Improves scalability</li><li>Facilitates technology diversity</li></ul>
+      <strong>Cons:</strong><ul><li>Increases operational complexity</li><li>Requires robust inter-service communication</li><li>Can lead to data consistency challenges</li></ul>`
+  },
+  {
+    "id": "domaindrivendesignddd",
+    "title": "Domain-Driven Design (DDD)",
+    "icon": "https://img.icons8.com/ios-filled/100/000000/domain.png",
+    "description": "Focuses on modeling software to match a domain's logic. Example: Bounded Contexts and Ubiquitous Language in large applications.",
+    "counter-example": "Counter-example: Designing software without input from domain experts.",
+    "pros": ["Aligns software with business needs", "Improves communication between developers and stakeholders"],
+    "cons": ["Can be complex to implement", "Requires significant domain knowledge"],
+    "details": `<h2>Domain-Driven Design (DDD)</h2>
+      <p>Focuses on modeling software to match a domain's logic.</p>
+      <ul><li><strong>Example:</strong> Bounded Contexts and Ubiquitous Language in large applications.</li>
+      <li><strong>Counter-example:</strong> Designing software without input from domain experts.</li></ul>
+      <strong>Pros:</strong><ul><li>Aligns software with business needs</li><li>Improves communication between developers and stakeholders</li></ul>
+      <strong>Cons:</strong><ul><li>Can be complex to implement</li><li>Requires significant domain knowledge</li></ul>`
+  }
+];
+
+    const solidPrinciples = [
+  {
+    id: "srp",
+    title: "Single Responsibility Principle (SRP)",
+    description: "A class should have only one reason to change.",
+    example: "A class that only handles user authentication, not logging or data access.",
+    counterExample: "A class that handles both authentication and logging.",
+    pros: ["Easier to maintain", "Improves readability"],
+    cons: ["May lead to more classes"]
+  },
+  {
+    id: "ocp",
+    title: "Open/Closed Principle (OCP)",
+    description: "Software entities should be open for extension, but closed for modification.",
+    example: "Adding new payment methods by extending a base class, not modifying it.",
+    counterExample: "Modifying a class every time a new payment method is added.",
+    pros: ["Facilitates code extension", "Reduces risk of bugs in existing code"],
+    cons: ["Can require more abstraction"]
+  },
+  {
+    id: "lsp",
+    title: "Liskov Substitution Principle (LSP)",
+    description: "Subtypes must be substitutable for their base types.",
+    example: "A Rectangle class can be replaced by a Square class without breaking code.",
+    counterExample: "A subclass that throws errors for base class methods it can't support.",
+    pros: ["Ensures correct inheritance", "Prevents unexpected behavior"],
+    cons: ["Can be subtle to enforce"]
+  },
+  {
+    id: "isp",
+    title: "Interface Segregation Principle (ISP)",
+    description: "Clients should not be forced to depend on interfaces they do not use.",
+    example: "Splitting a large interface into smaller, more specific ones.",
+    counterExample: "A class forced to implement methods it doesn't need.",
+    pros: ["Reduces unnecessary code", "Improves flexibility"],
+    cons: ["May result in more interfaces"]
+  },
+  {
+    id: "dip",
+    title: "Dependency Inversion Principle (DIP)",
+    description: "Depend on abstractions, not concretions.",
+    example: "Classes depend on interfaces, not concrete classes.",
+    counterExample: "A class directly instantiates its dependencies.",
+    pros: ["Improves testability", "Decouples code"],
+    cons: ["Can add complexity"]
+  }
+];
+
+    const dddSubtopics = [
+  {
+    id: "bounded-context",
+    title: "Bounded Context",
+    description: "A boundary within which a particular domain model is defined and applicable.",
+    example: "User and Order are separate bounded contexts in an e-commerce system.",
+    counterExample: "Mixing unrelated models and logic in a single context.",
+    pros: ["Reduces ambiguity", "Enables independent development"],
+    cons: ["Requires clear boundaries", "Can add integration complexity"]
+  },
+  {
+    id: "ubiquitous-language",
+    title: "Ubiquitous Language",
+    description: "A common language used by both developers and domain experts to describe the domain.",
+    example: "Using the same terms for concepts in code and business discussions.",
+    counterExample: "Developers and business use different terms for the same concept.",
+    pros: ["Improves communication", "Reduces misunderstandings"],
+    cons: ["Requires discipline to maintain"]
+  },
+  {
+    id: "entity",
+    title: "Entity",
+    description: "An object defined primarily by its identity, not its attributes.",
+    example: "A Customer object with a unique ID.",
+    counterExample: "Treating objects with no unique identity as entities.",
+    pros: ["Tracks changes over time", "Supports complex domains"],
+    cons: ["Can be overused for simple data"]
+  },
+  {
+    id: "value-object",
+    title: "Value Object",
+    description: "An object defined by its attributes, not its identity.",
+    example: "An Address object with street, city, and zip code.",
+    counterExample: "Assigning unique IDs to value objects.",
+    pros: ["Immutable", "Easier to reason about"],
+    cons: ["May require copying for changes"]
+  },
+  {
+    id: "aggregate",
+    title: "Aggregate",
+    description: "A cluster of domain objects treated as a single unit for data changes.",
+    example: "Order aggregate includes Order and OrderItems.",
+    counterExample: "Allowing external objects to modify aggregate internals directly.",
+    pros: ["Enforces consistency", "Defines clear ownership"],
+    cons: ["Can be complex to design"]
+  },
+  {
+    id: "repository",
+    title: "Repository",
+    description: "A mechanism for encapsulating storage, retrieval, and search behavior.",
+    example: "OrderRepository handles saving and retrieving Order aggregates.",
+    counterExample: "Directly accessing the database from domain logic.",
+    pros: ["Decouples domain from data access", "Improves testability"],
+    cons: ["Adds abstraction layer"]
+  }
+];
+
+    function renderCards() {
+      const container = document.getElementById('card-container');
+      container.innerHTML = concepts.map(c => `
+        <div class="card" onclick="showModal('${c.id}')">
+          <img class="icon" src="${c.icon}" alt="${c.title}" />
+          <div class="title">${c.title}</div>
+          <div class="description">${c.description.replace(/\n/g, '<br>')}</div>
+        </div>`).join('');
+    }
+
+    function showSolidPrincipleModal(principleId) {
+  const p = solidPrinciples.find(x => x.id === principleId);
+  if (p) {
+    modalBody.innerHTML = `
+      <h2>${p.title}</h2>
+      <p>${p.description}</p>
+      <ul><li><strong>Example:</strong> ${p.example}</li>
+      <li><strong>Counter-example:</strong> ${p.counterExample}</li></ul>
+      <strong>Pros:</strong><ul>${p.pros.map(pr => `<li>${pr}</li>`).join('')}</ul>
+      <strong>Cons:</strong><ul>${p.cons.map(co => `<li>${co}</li>`).join('')}</ul>
+      <button onclick="showModal('solidprinciples')">Back to SOLID Principles</button>
+    `;
+    modal.style.display = 'flex';
+  }
+}
+
+    function showDDDSubtopicModal(subtopicId) {
+  const s = dddSubtopics.find(x => x.id === subtopicId);
+  if (s) {
+    modalBody.innerHTML = `
+      <h2>${s.title}</h2>
+      <p>${s.description}</p>
+      <ul><li><strong>Example:</strong> ${s.example}</li>
+      <li><strong>Counter-example:</strong> ${s.counterExample}</li></ul>
+      <strong>Pros:</strong><ul>${s.pros.map(pr => `<li>${pr}</li>`).join('')}</ul>
+      <strong>Cons:</strong><ul>${s.cons.map(co => `<li>${co}</li>`).join('')}</ul>
+      <button onclick=\"showModal('domaindrivendesignddd')\">Back to DDD</button>
+    `;
+    modal.style.display = 'flex';
+  }
+}
+
+    function showModal(id) {
+      if (id === 'solidprinciples') {
+        modalBody.innerHTML = `
+      <h2>SOLID Principles</h2>
+      <p>Five principles for maintainable OOP: SRP, OCP, LSP, ISP, DIP.</p>
+      <ul>
+        <li><a href="#" onclick="showSolidPrincipleModal('srp');return false;">Single Responsibility Principle (SRP)</a></li>
+        <li><a href="#" onclick="showSolidPrincipleModal('ocp');return false;">Open/Closed Principle (OCP)</a></li>
+        <li><a href="#" onclick="showSolidPrincipleModal('lsp');return false;">Liskov Substitution Principle (LSP)</a></li>
+        <li><a href="#" onclick="showSolidPrincipleModal('isp');return false;">Interface Segregation Principle (ISP)</a></li>
+        <li><a href="#" onclick="showSolidPrincipleModal('dip');return false;">Dependency Inversion Principle (DIP)</a></li>
+      </ul>
+      <button onclick="closeModal()">Close</button>
+    `;
+        modal.style.display = 'flex';
+        return;
+      }
+      if (id === 'domaindrivendesignddd') {
+        modalBody.innerHTML = `
+      <h2>Domain-Driven Design (DDD)</h2>
+      <p>Focuses on modeling software to match a domain's logic. Key subtopics:</p>
+      <ul>
+        <li><a href=\"#\" onclick=\"showDDDSubtopicModal('bounded-context');return false;\">Bounded Context</a></li>
+        <li><a href=\"#\" onclick=\"showDDDSubtopicModal('ubiquitous-language');return false;\">Ubiquitous Language</a></li>
+        <li><a href=\"#\" onclick=\"showDDDSubtopicModal('entity');return false;\">Entity</a></li>
+        <li><a href=\"#\" onclick=\"showDDDSubtopicModal('value-object');return false;\">Value Object</a></li>
+        <li><a href=\"#\" onclick=\"showDDDSubtopicModal('aggregate');return false;\">Aggregate</a></li>
+        <li><a href=\"#\" onclick=\"showDDDSubtopicModal('repository');return false;\">Repository</a></li>
+      </ul>
+      <button onclick=\"closeModal()\">Close</button>
+    `;
+        modal.style.display = 'flex';
+        return;
+      }
+      const concept = concepts.find(c => c.id === id);
+      if (concept) {
+        modalBody.innerHTML = concept.details;
+        modal.style.display = 'flex';
+      }
+    }
+
+    function closeModal() {
+      modal.style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+      if (event.target === modal) {
+        closeModal();
+      }
+    }
+
+    renderCards();
+  </script>
+</body>
+</html>
