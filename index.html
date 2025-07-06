@@ -141,25 +141,25 @@
   {
     "id": "encapsulation",
     "title": "Encapsulation",
-    "icon": "https://img.icons8.com/?size=100&id=D8fI0PGNpq8i&format=png&color=000000",
+    "icon": "https://img.icons8.com/?size=100&id=hBExduFpnYNx&format=png&color=000000",
     "description": "Bundling data (attributes) and methods (functions) that operate on that data within a class, and restricting direct access to some of the object's components.",
     "example": "Example: A class with private fields and public getters/setters.",
-    "counter-example": "Anti-pattern: Exposing internal state directly without methods.",
+    "anti-pattern": "Anti-pattern: Exposing internal state directly without methods.",
     "pros": ["Improves modularity", "Protects internal state", "Eases maintenance"],
     "cons": ["Can add boilerplate code", "May reduce flexibility if overused"],
     "details": `<h2>Encapsulation</h2>
       <p>Encapsulation is the practice of bundling data (attributes) and methods (functions) that operate on that data within a class, and restricting direct access to some of the object's components.</p>
       <ul><li><strong>✅ Example:</strong> A class with private fields and public getters/setters.</li>
       <li><strong>❌ Anti-pattern:</strong> Exposing internal state directly without methods.</li></ul>
-      <strong>👍 Pros:</strong><ul><li>👍 Improves modularity</li><li>👍 Protects internal state</li><li>👍 Eases maintenance</li></ul>
-      <strong>👎 Cons:</strong><ul><li>👎 Can add boilerplate code</li><li>👎 May reduce flexibility if overused</li></ul>`
+      <strong>Pros:</strong><ul><li>👍🏻 Improves modularity</li><li>👍🏻 Protects internal state</li><li>👍🏻 Eases maintenance</li></ul>
+      <strong>Cons:</strong><ul><li>👎🏻 Can add boilerplate code</li><li>👎🏻 May reduce flexibility if overused</li></ul>`
   },
   {
     "id": "polymorphism",
     "title": "Polymorphism",
-    "icon": "https://img.icons8.com/ios/100/000000/polyline.png",
+    "icon": "https://img.icons8.com/?size=100&id=12157&format=png&color=000000",
     "description": "Ability for different classes to be treated as instances of the same interface. Example: Animal.speak() behaves differently in Dog vs Cat.",
-    "counter-example": "Anti-pattern: Using type checks and manual dispatch instead of polymorphism.",
+    "anti-pattern": "Anti-pattern: Using type checks and manual dispatch instead of polymorphism.",
     "pros": ["Enables code reuse", "Simplifies code extension", "Supports flexible design"],
     "cons": ["Can make code harder to trace", "May introduce runtime errors if misused"],
     "details": `<h2>Polymorphism</h2>
@@ -167,93 +167,85 @@
       <ul><li><strong>✅ Example:</strong> <br>
       <em>Animal</em> is an interface (or abstract class) with a <code>speak()</code> method. <em>Cat</em> and <em>Dog</em> are classes that implement the <em>Animal</em> interface and provide their own implementation of <code>speak()</code>.<br>
       A function <code>makeItSpeak(animal: Animal)</code> can accept either a <code>Cat</code> or <code>Dog</code> object at runtime, and will call the correct <code>speak()</code> method depending on the actual object passed in.<br>
-      For example:<br>
-      <pre><code>interface Animal { speak(): void; }
-class Dog implements Animal { speak() { console.log('Woof!'); } }
-class Cat implements Animal { speak() { console.log('Meow!'); } }
-function makeItSpeak(animal: Animal) { animal.speak(); }
-makeItSpeak(new Dog()); // Woof!
-makeItSpeak(new Cat()); // Meow!
-</code></pre>
       </li>
       <li><strong>❌ Anti-pattern:</strong> Using type checks and manual dispatch instead of polymorphism.</li></ul>
-      <strong>👍 Pros:</strong><ul><li>👍 Enables code reuse</li><li>👍 Simplifies code extension</li><li>👍 Supports flexible design</li></ul>
-      <strong>👎 Cons:</strong><ul><li>👎 Can make code harder to trace</li><li>👎 May introduce runtime errors if misused</li></ul>`
+      <strong>Pros:</strong><ul><li>👍🏻 Enables code reuse</li><li>👍🏻 Simplifies code extension</li><li>👍🏻 Supports flexible design</li></ul>
+      <strong>Cons:</strong><ul><li>👎🏻 Can make code harder to trace</li><li>👎🏻 May introduce runtime errors if misused</li></ul>`
   },
   {
     "id": "solidprinciples",
     "title": "SOLID Principles",
-    "icon": "https://img.icons8.com/ios-filled/100/000000/sorting-arrows-horizontal.png",
-    "description": "Five principles for maintainable OOP: SRP, OCP, LSP, ISP, DIP. Example: Each class should have one reason to change (SRP).",
-    "counter-example": "Anti-pattern: A class that handles both data access and UI logic (violates SRP).",
-    "pros": ["Improves maintainability", "Encourages separation of concerns", "Facilitates testing"],
-    "cons": ["Can increase code complexity", "May require more classes and interfaces"],
+    "icon": "https://img.icons8.com/?size=100&id=12817&format=png&color=000000",
+    "description": "Five fundamental principles for object-oriented programming and design that promote maintainable, flexible, and robust software architecture. These principles help developers write code that is easier to understand, modify, and extend.",
+    "anti-pattern": "Anti-pattern: Writing monolithic classes that violate multiple SOLID principles, leading to tightly coupled, hard-to-maintain code.",
+    "pros": ["Improves maintainability and readability", "Encourages separation of concerns and modularity", "Facilitates testing and debugging", "Reduces code duplication", "Makes code more flexible and extensible"],
+    "cons": ["Can increase initial code complexity and development time", "May require more classes and interfaces", "Can lead to over-engineering if applied unnecessarily"],
     "details": `<h2>SOLID Principles</h2>
-      <p>Five principles for maintainable OOP: SRP, OCP, LSP, ISP, DIP.</p>
-      <ul><li><strong>✅ Example:</strong> Each class should have one reason to change (SRP).</li>
-      <li><strong>❌ Anti-pattern:</strong> A class that handles both data access and UI logic (violates SRP).</li></ul>
-      <strong>👍 Pros:</strong><ul><li>👍 Improves maintainability</li><li>👍 Encourages separation of concerns</li><li>👍 Facilitates testing</li></ul>
-      <strong>👎 Cons:</strong><ul><li>👎 Can increase code complexity</li><li>👎 May require more classes and interfaces</li></ul>`
+      <p>The SOLID principles are five fundamental design principles for object-oriented programming that promote maintainable, flexible, and robust software architecture. These principles, introduced by Robert C. Martin, help developers create code that is easier to understand, modify, and extend over time.</p>
+      <ul><li><strong>✅ Example:</strong> A well-architected e-commerce system where each class has a single responsibility (SRP), payment processors can be extended without modification (OCP), different payment types are interchangeable (LSP), interfaces are focused and specific (ISP), and high-level modules depend on abstractions rather than concrete implementations (DIP).</li>
+      <li><strong>❌ Anti-pattern:</strong> A monolithic 'OrderManager' class that handles order creation, payment processing, inventory management, email notifications, and logging - violating multiple SOLID principles and creating a maintenance nightmare.</li></ul>
+      <strong>Pros:</strong><ul><li>👍🏻 Improves maintainability and readability</li><li>👍🏻 Encourages separation of concerns and modularity</li><li>👍🏻 Facilitates testing and debugging</li><li>👍🏻 Reduces code duplication</li><li>👍🏻 Makes code more flexible and extensible</li></ul>
+      <strong>Cons:</strong><ul><li>👎🏻 Can increase initial code complexity and development time</li><li>👎🏻 May require more classes and interfaces</li><li>👎🏻 Can lead to over-engineering if applied unnecessarily</li></ul>`
   },
   {
     "id": "captheorem",
     "title": "CAP Theorem",
-    "icon": "https://img.icons8.com/ios-filled/100/000000/data-in-both-directions.png",
+    "icon": "https://img.icons8.com/?size=100&id=12025&format=png&color=000000",
     "description": "In distributed systems, you can only guarantee two of: Consistency, Availability, Partition Tolerance. Example: CP system sacrifices availability during network partition.",
-    "counter-example": "Anti-pattern: Assuming a distributed system can guarantee all three properties at once.",
+    "anti-pattern": "Anti-pattern: Assuming a distributed system can guarantee all three properties at once.",
     "pros": ["Clarifies trade-offs in distributed systems", "Guides architecture decisions"],
     "cons": ["Can oversimplify real-world systems", "Not all systems fit neatly into CAP categories"],
     "details": `<h2>CAP Theorem</h2>
       <p>In distributed systems, you can only guarantee two of: Consistency, Availability, Partition Tolerance.</p>
       <ul><li><strong>✅ Example:</strong> CP system sacrifices availability during network partition.</li>
       <li><strong>❌ Anti-pattern:</strong> Assuming a distributed system can guarantee all three properties at once.</li></ul>
-      <strong>👍 Pros:</strong><ul><li>👍 Clarifies trade-offs in distributed systems</li><li>👍 Guides architecture decisions</li></ul>
-      <strong>👎 Cons:</strong><ul><li>👎 Can oversimplify real-world systems</li><li>👎 Not all systems fit neatly into CAP categories</li></ul>`
+      <strong>Pros:</strong><ul><li>👍🏻 Clarifies trade-offs in distributed systems</li><li>👍🏻 Guides architecture decisions</li></ul>
+      <strong>Cons:</strong><ul><li>👎🏻 Can oversimplify real-world systems</li><li>👎🏻 Not all systems fit neatly into CAP categories</li></ul>`
   },
   {
     "id": "inheritance",
     "title": "Inheritance",
-    "icon": "https://img.icons8.com/ios-filled/100/000000/folder-invoices--v1.png",
+    "icon": "https://img.icons8.com/?size=100&id=DkpYfYRyotRl&format=png&color=000000",
     "description": "Mechanism to derive new classes from existing ones. Example: `class Car extends Vehicle {}` inherits attributes and methods.",
-    "counter-example": "Anti-pattern: Copy-pasting code instead of using inheritance.",
+    "anti-pattern": "Anti-pattern: Copy-pasting code instead of using inheritance.",
     "pros": ["Promotes code reuse", "Simplifies extension of functionality"],
     "cons": ["Can lead to tight coupling", "May cause fragile base class problem"],
     "details": `<h2>Inheritance</h2>
       <p>Mechanism to derive new classes from existing ones.</p>
       <ul><li><strong>✅ Example:</strong> class Car extends Vehicle {} inherits attributes and methods.</li>
       <li><strong>❌ Anti-pattern:</strong> Copy-pasting code instead of using inheritance.</li></ul>
-      <strong>👍 Pros:</strong><ul><li>👍 Promotes code reuse</li><li>👍 Simplifies extension of functionality</li></ul>
-      <strong>👎 Cons:</strong><ul><li>👎 Can lead to tight coupling</li><li>👎 May cause fragile base class problem</li></ul>`
+      <strong>Pros:</strong><ul><li>👍🏻 Promotes code reuse</li><li>👍🏻 Simplifies extension of functionality</li></ul>
+      <strong>Cons:</strong><ul><li>👎🏻 Can lead to tight coupling</li><li>👎🏻 May cause fragile base class problem</li></ul>`
   },
   {
     "id": "microservices",
     "title": "Microservices",
-    "icon": "https://img.icons8.com/ios-filled/100/000000/microservices.png",
+    "icon": "https://img.icons8.com/?size=100&id=13052&format=png&color=000000",
     "description": "Architectural style that structures an app as a collection of loosely coupled services. Example: User service, order service, and payment service communicate via REST.",
-    "counter-example": "Anti-pattern: A monolithic application where all logic is in a single codebase.",
+    "anti-pattern": "Anti-pattern: A monolithic application where all logic is in a single codebase.",
     "pros": ["Enables independent deployment", "Improves scalability", "Facilitates technology diversity"],
     "cons": ["Increases operational complexity", "Requires robust inter-service communication", "Can lead to data consistency challenges"],
     "details": `<h2>Microservices</h2>
       <p>Architectural style that structures an app as a collection of loosely coupled services.</p>
       <ul><li><strong>✅ Example:</strong> User service, order service, and payment service communicate via REST.</li>
       <li><strong>❌ Anti-pattern:</strong> A monolithic application where all logic is in a single codebase.</li></ul>
-      <strong>👍 Pros:</strong><ul><li>👍 Enables independent deployment</li><li>👍 Improves scalability</li><li>👍 Facilitates technology diversity</li></ul>
-      <strong>👎 Cons:</strong><ul><li>👎 Increases operational complexity</li><li>👎 Requires robust inter-service communication</li><li>👎 Can lead to data consistency challenges</li></ul>`
+      <strong>Pros:</strong><ul><li>👍🏻 Enables independent deployment</li><li>👍🏻 Improves scalability</li><li>👍🏻 Facilitates technology diversity</li></ul>
+      <strong>Cons:</strong><ul><li>👎🏻 Increases operational complexity</li><li>👎🏻 Requires robust inter-service communication</li><li>👎🏻 Can lead to data consistency challenges</li></ul>`
   },
   {
     "id": "domaindrivendesignddd",
     "title": "Domain-Driven Design (DDD)",
-    "icon": "https://img.icons8.com/ios-filled/100/000000/domain.png",
+    "icon": "https://img.icons8.com/?size=100&id=12289&format=png&color=000000",
     "description": "Focuses on modeling software to match a domain's logic. Example: Bounded Contexts and Ubiquitous Language in large applications.",
-    "counter-example": "Anti-pattern: Designing software without input from domain experts.",
+    "anti-pattern": "Anti-pattern: Designing software without input from domain experts.",
     "pros": ["Aligns software with business needs", "Improves communication between developers and stakeholders"],
     "cons": ["Can be complex to implement", "Requires significant domain knowledge"],
     "details": `<h2>Domain-Driven Design (DDD)</h2>
       <p>Focuses on modeling software to match a domain's logic.</p>
       <ul><li><strong>✅ Example:</strong> Bounded Contexts and Ubiquitous Language in large applications.</li>
       <li><strong>❌ Anti-pattern:</strong> Designing software without input from domain experts.</li></ul>
-      <strong>👍 Pros:</strong><ul><li>👍 Aligns software with business needs</li><li>👍 Improves communication between developers and stakeholders</li></ul>
-      <strong>👎 Cons:</strong><ul><li>👎 Can be complex to implement</li><li>👎 Requires significant domain knowledge</li></ul>`
+      <strong>Pros:</strong><ul><li>👍🏻 Aligns software with business needs</li><li>👍🏻 Improves communication between developers and stakeholders</li></ul>
+      <strong>Cons:</strong><ul><li>👎🏻 Can be complex to implement</li><li>👎🏻 Requires significant domain knowledge</li></ul>`
   }
 ];
 
@@ -261,47 +253,47 @@ makeItSpeak(new Cat()); // Meow!
   {
     id: "srp",
     title: "Single Responsibility Principle (SRP)",
-    description: "A class should have only one reason to change.",
-    example: "A class that only handles user authentication, not logging or data access.",
-    counterExample: "A class that handles both authentication and logging.",
-    pros: ["Easier to maintain", "Improves readability"],
-    cons: ["May lead to more classes"]
+    description: "A class should have only one reason to change, meaning it should have only one job or responsibility. This principle ensures that a class is focused on a single concern, making it easier to understand, test, and maintain.",
+    example: "A 'UserEmailService' class that only handles sending emails to users. It doesn't manage user data, validate user input, or handle authentication - it has one clear responsibility: email communication.",
+    counterExample: "A 'User' class that handles user data storage, email sending, password validation, logging, and file operations - having multiple reasons to change and multiple responsibilities.",
+    pros: ["Easier to understand and maintain", "Improves code readability and organization", "Reduces the impact of changes", "Facilitates unit testing", "Promotes code reusability"],
+    cons: ["May lead to more classes in the system", "Can sometimes be challenging to identify the 'single responsibility'", "Might increase initial development complexity"]
   },
   {
     id: "ocp",
     title: "Open/Closed Principle (OCP)",
-    description: "Software entities should be open for extension, but closed for modification.",
-    example: "Adding new payment methods by extending a base class, not modifying it.",
-    counterExample: "Modifying a class every time a new payment method is added.",
-    pros: ["Facilitates code extension", "Reduces risk of bugs in existing code"],
-    cons: ["Can require more abstraction"]
+    description: "Software entities (classes, modules, functions, etc.) should be open for extension but closed for modification. This means you should be able to add new functionality without changing existing code, typically achieved through inheritance, interfaces, or composition.",
+    example: "A 'PaymentProcessor' abstract class with concrete implementations like 'CreditCardProcessor', 'PayPalProcessor', and 'CryptoProcessor'. Adding a new payment method (like 'ApplePayProcessor') doesn't require modifying existing payment classes.",
+    counterExample: "A 'PaymentProcessor' class with a large switch statement that needs to be modified every time a new payment method is added, requiring changes to existing, tested code.",
+    pros: ["Facilitates code extension without breaking existing functionality", "Reduces risk of introducing bugs in existing code", "Promotes loose coupling", "Supports the addition of new features safely", "Encourages the use of abstraction"],
+    cons: ["Can require more abstraction and planning upfront", "May lead to more complex inheritance hierarchies", "Can be over-engineered if future requirements are unclear"]
   },
   {
     id: "lsp",
     title: "Liskov Substitution Principle (LSP)",
-    description: "Subtypes must be substitutable for their base types.",
-    example: "A Rectangle class can be replaced by a Square class without breaking code.",
-    counterExample: "A subclass that throws errors for base class methods it can't support.",
-    pros: ["Ensures correct inheritance", "Prevents unexpected behavior"],
-    cons: ["Can be subtle to enforce"]
+    description: "Subtypes must be substitutable for their base types without altering the correctness of the program. This means that objects of a superclass should be replaceable with objects of a subclass without breaking the application's functionality or violating expected behavior.",
+    example: "A 'Bird' base class with a 'fly()' method, where 'Eagle' and 'Sparrow' subclasses can be used interchangeably anywhere a 'Bird' is expected, both implementing 'fly()' appropriately for their type without breaking the program's logic.",
+    counterExample: "A 'Bird' base class with 'Penguin' subclass that throws an exception when 'fly()' is called, violating the expected behavior and breaking substitutability.",
+    pros: ["Ensures correct inheritance design", "Prevents unexpected behavior when using polymorphism", "Maintains program correctness", "Enables reliable code reuse", "Supports robust object-oriented design"],
+    cons: ["Can be subtle and difficult to enforce", "May require careful design of base class contracts", "Can limit flexibility in some inheritance scenarios"]
   },
   {
     id: "isp",
     title: "Interface Segregation Principle (ISP)",
-    description: "Clients should not be forced to depend on interfaces they do not use.",
-    example: "Splitting a large interface into smaller, more specific ones.",
-    counterExample: "A class forced to implement methods it doesn't need.",
-    pros: ["Reduces unnecessary code", "Improves flexibility"],
-    cons: ["May result in more interfaces"]
+    description: "Clients should not be forced to depend on interfaces they do not use. This principle advocates for creating specific, focused interfaces rather than large, monolithic ones. Classes should only implement the methods they actually need.",
+    example: "Instead of one large 'Worker' interface with methods like 'work()', 'eat()', 'sleep()', create separate interfaces: 'Workable' with 'work()', 'Eatable' with 'eat()', and 'Sleepable' with 'sleep()'. A 'Robot' class only implements 'Workable', while a 'Human' class implements all three.",
+    counterExample: "A large 'MultiFunctionDevice' interface that forces a simple 'Printer' class to implement unused methods like 'scan()', 'fax()', and 'copy()', typically resulting in empty implementations or thrown exceptions.",
+    pros: ["Reduces unnecessary dependencies", "Improves code flexibility and maintainability", "Makes interfaces more focused and cohesive", "Enables better testability", "Prevents interface pollution"],
+    cons: ["May result in more interfaces to manage", "Can increase the number of dependencies", "Requires careful interface design planning"]
   },
   {
     id: "dip",
     title: "Dependency Inversion Principle (DIP)",
-    description: "Depend on abstractions, not concretions.",
-    example: "Classes depend on interfaces, not concrete classes.",
-    counterExample: "A class directly instantiates its dependencies.",
-    pros: ["Improves testability", "Decouples code"],
-    cons: ["Can add complexity"]
+    description: "High-level modules should not depend on low-level modules. Both should depend on abstractions (interfaces or abstract classes). Additionally, abstractions should not depend on details; details should depend on abstractions. This principle promotes loose coupling and makes systems more flexible and testable.",
+    example: "An 'OrderService' class depends on an 'IPaymentProcessor' interface rather than a concrete 'CreditCardProcessor' class. The payment processor implementation is injected, allowing easy switching between different payment methods without changing the OrderService code.",
+    counterExample: "An 'OrderService' class that directly instantiates and uses a 'CreditCardProcessor' class, creating tight coupling and making it difficult to test or switch to different payment processors.",
+    pros: ["Improves testability through dependency injection", "Reduces coupling between modules", "Increases flexibility and extensibility", "Makes code more modular and maintainable", "Enables easier mocking for unit tests"],
+    cons: ["Can add complexity to the system architecture", "May require dependency injection frameworks", "Can make code harder to follow for beginners", "Requires more upfront design consideration"]
   }
 ];
 
@@ -380,8 +372,8 @@ makeItSpeak(new Cat()); // Meow!
       <p>${p.description}</p>
       <ul><li><strong>✅ Example:</strong> ${p.example}</li>
       <li><strong>❌ Anti-pattern:</strong> ${p.counterExample}</li></ul>
-      <strong>👍 Pros:</strong><ul>${p.pros.map(pr => `<li>👍 ${pr}</li>`).join('')}</ul>
-      <strong>👎 Cons:</strong><ul>${p.cons.map(co => `<li>👎 ${co}</li>`).join('')}</ul>
+      <strong>Pros:</strong><ul>${p.pros.map(pr => `<li>👍🏻 ${pr}</li>`).join('')}</ul>
+      <strong>Cons:</strong><ul>${p.cons.map(co => `<li>👎🏻 ${co}</li>`).join('')}</ul>
       <button onclick="showModal('solidprinciples')">Back to SOLID Principles</button>
     `;
     modal.style.display = 'flex';
@@ -396,8 +388,8 @@ makeItSpeak(new Cat()); // Meow!
       <p>${s.description}</p>
       <ul><li><strong>✅ Example:</strong> ${s.example}</li>
       <li><strong>❌ Anti-pattern:</strong> ${s.counterExample}</li></ul>
-      <strong>👍 Pros:</strong><ul>${s.pros.map(pr => `<li>👍 ${pr}</li>`).join('')}</ul>
-      <strong>👎 Cons:</strong><ul>${s.cons.map(co => `<li>👎 ${co}</li>`).join('')}</ul>
+      <strong>Pros:</strong><ul>${s.pros.map(pr => `<li>👍🏻 ${pr}</li>`).join('')}</ul>
+      <strong>Cons:</strong><ul>${s.cons.map(co => `<li>👎🏻 ${co}</li>`).join('')}</ul>
       <button onclick=\"showModal('domaindrivendesignddd')\">Back to DDD</button>
     `;
     modal.style.display = 'flex';
