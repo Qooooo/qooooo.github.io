@@ -106,10 +106,15 @@
       border-radius: 8px;
       width: 90%;
       max-width: 600px;
+      max-height: 90vh;
+      overflow-y: auto;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     }
     .modal h2 {
       margin-top: 0;
+    }
+    .modal ul li {
+      margin-bottom: 0.4rem;
     }
     .close {
       float: right;
@@ -158,7 +163,7 @@
     "id": "polymorphism",
     "title": "Polymorphism",
     "icon": "https://img.icons8.com/?size=100&id=12157&format=png&color=000000",
-    "description": "Ability for different classes to be treated as instances of the same interface. Example: Animal.speak() behaves differently in Dog vs Cat.",
+    "description": "Polymorphism is the ability for objects of different classes to be treated as the same type, with the actual behavior of a function call determined by the specific class of the object passed in at runtime.",
     "anti-pattern": "Anti-pattern: Using type checks and manual dispatch instead of polymorphism.",
     "pros": ["Enables code reuse", "Simplifies code extension", "Supports flexible design"],
     "cons": ["Can make code harder to trace", "May introduce runtime errors if misused"],
@@ -271,7 +276,7 @@
   {
     id: "lsp",
     title: "Liskov Substitution Principle (LSP)",
-    description: "Subtypes must be substitutable for their base types without altering the correctness of the program. This means that objects of a superclass should be replaceable with objects of a subclass without breaking the application's functionality or violating expected behavior.",
+    description: "Subtypes must be substitutable for their base types without breaking the program. It means that objects of a superclass should be replaceable with objects of a subclass without breaking the application's functionality or violating expected behavior.",
     example: "A 'Bird' base class with a 'fly()' method, where 'Eagle' and 'Sparrow' subclasses can be used interchangeably anywhere a 'Bird' is expected, both implementing 'fly()' appropriately for their type without breaking the program's logic.",
     counterExample: "A 'Bird' base class with 'Penguin' subclass that throws an exception when 'fly()' is called, violating the expected behavior and breaking substitutability.",
     pros: ["Ensures correct inheritance design", "Prevents unexpected behavior when using polymorphism", "Maintains program correctness", "Enables reliable code reuse", "Supports robust object-oriented design"],
@@ -281,8 +286,8 @@
     id: "isp",
     title: "Interface Segregation Principle (ISP)",
     description: "Clients should not be forced to depend on interfaces they do not use. This principle advocates for creating specific, focused interfaces rather than large, monolithic ones. Classes should only implement the methods they actually need.",
-    example: "Instead of one large 'Worker' interface with methods like 'work()', 'eat()', 'sleep()', create separate interfaces: 'Workable' with 'work()', 'Eatable' with 'eat()', and 'Sleepable' with 'sleep()'. A 'Robot' class only implements 'Workable', while a 'Human' class implements all three.",
-    counterExample: "A large 'MultiFunctionDevice' interface that forces a simple 'Printer' class to implement unused methods like 'scan()', 'fax()', and 'copy()', typically resulting in empty implementations or thrown exceptions.",
+    example: "Instead of one large 'Bird' interface with methods like 'fly()', 'swim()', and 'layEggs()', create separate interfaces: 'Flyable' with 'fly()', 'Swimmable' with 'swim()', and 'EggLayer' with 'layEggs()'. An 'Eagle' class implements 'Flyable' and 'EggLayer', while an 'Ostrich' class only implements 'EggLayer' (since ostriches can't fly or swim well).",
+    counterExample: "A large 'Bird' interface that forces an 'Ostrich' class to implement unused methods like 'fly()' and 'swim()', typically resulting in empty implementations or thrown exceptions since ostriches cannot fly or swim effectively.",
     pros: ["Reduces unnecessary dependencies", "Improves code flexibility and maintainability", "Makes interfaces more focused and cohesive", "Enables better testability", "Prevents interface pollution"],
     cons: ["May result in more interfaces to manage", "Can increase the number of dependencies", "Requires careful interface design planning"]
   },
@@ -408,7 +413,6 @@
         <li><a href="#" onclick="showSolidPrincipleModal('isp');return false;">Interface Segregation Principle (ISP)</a></li>
         <li><a href="#" onclick="showSolidPrincipleModal('dip');return false;">Dependency Inversion Principle (DIP)</a></li>
       </ul>
-      <button onclick="closeModal()">Close</button>
     `;
         modal.style.display = 'flex';
         return;
@@ -425,7 +429,6 @@
         <li><a href=\"#\" onclick=\"showDDDSubtopicModal('aggregate');return false;\">Aggregate</a></li>
         <li><a href=\"#\" onclick=\"showDDDSubtopicModal('repository');return false;\">Repository</a></li>
       </ul>
-      <button onclick=\"closeModal()\">Close</button>
     `;
         modal.style.display = 'flex';
         return;
