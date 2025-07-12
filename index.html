@@ -180,7 +180,7 @@
   {
     "id": "solidprinciples",
     "title": "SOLID Principles",
-    "icon": "https://img.icons8.com/?size=100&id=12817&format=png&color=000000",
+    "icon": "https://img.icons8.com/?size=100&id=20840&format=png&color=000000",
     "description": "Five fundamental principles for object-oriented programming and design that promote maintainable, flexible, and robust software architecture. These principles help developers write code that is easier to understand, modify, and extend.",
     "anti-pattern": "Anti-pattern: Writing monolithic classes that violate multiple SOLID principles, leading to tightly coupled, hard-to-maintain code.",
     "pros": ["Improves maintainability and readability", "Encourages separation of concerns and modularity", "Facilitates testing and debugging", "Reduces code duplication", "Makes code more flexible and extensible"],
@@ -251,6 +251,216 @@
       <li><strong>❌ Anti-pattern:</strong> Designing software without input from domain experts.</li></ul>
       <strong>Pros:</strong><ul><li>👍🏻 Aligns software with business needs</li><li>👍🏻 Improves communication between developers and stakeholders</li></ul>
       <strong>Cons:</strong><ul><li>👎🏻 Can be complex to implement</li><li>👎🏻 Requires significant domain knowledge</li></ul>`
+  },
+  {
+    "id": "kiss",
+    "title": "KISS Principle",
+    "icon": "https://img.icons8.com/?size=100&id=Nvl7OEzsGckV&format=png&color=000000",
+    "description": "Keep It Simple, Stupid (KISS) emphasizes simplicity and clarity in software design and logic, helping avoid over-engineering and making code easier to read and maintain.",
+    "anti-pattern": "Anti-pattern: Creating overly complex solutions for simple problems, adding unnecessary layers or abstractions.",
+    "pros": ["Improves readability", "Reduces maintenance effort", "Minimizes bugs", "Speeds up development"],
+    "cons": ["May oversimplify complex requirements", "Can ignore edge cases if too minimalistic"],
+    "details": `<h2>KISS Principle</h2>
+      <p>The KISS Principle stands for "Keep It Simple, Stupid" and encourages developers to write code that is simple, clear, and easy to understand. By focusing on simplicity, it helps avoid over-engineering and unnecessary complexity.</p>
+      <ul><li><strong>✅ Example:</strong> Using straightforward logic and clear variable names instead of clever but confusing tricks.</li>
+      <li><strong>❌ Anti-pattern:</strong> Creating overly complex solutions for simple problems, adding unnecessary layers or abstractions.</li></ul>
+      <strong>Pros:</strong><ul><li>👍🏻 Improves readability</li><li>👍🏻 Reduces maintenance effort</li><li>👍🏻 Minimizes bugs</li><li>👍🏻 Speeds up development</li></ul>
+      <strong>Cons:</strong><ul><li>👎🏻 May oversimplify complex requirements</li><li>👎🏻 Can ignore edge cases if too minimalistic</li></ul>`
+  },
+  {
+    "id": "cleanarchitecture",
+    "title": "Clean Architecture",
+    "icon": "https://img.icons8.com/?size=100&id=12850&format=png&color=000000",
+    "description": "Clean Architecture keeps business rules at the core, isolated from external concerns, making the codebase more robust, testable, and adaptable to change.",
+    "anti-pattern": "Anti-pattern: Mixing business logic with infrastructure code, making changes risky and hard to test.",
+    "pros": ["Improves testability", "Enhances maintainability", "Facilitates adaptability to change", "Promotes separation of concerns"],
+    "cons": ["Can increase initial complexity", "Requires discipline in layering", "May need more upfront design"],
+    "details": `<h2>Clean Architecture</h2>
+      <p>Clean Architecture is a software design approach that places business rules and domain logic at the center of the application, keeping them isolated from frameworks, databases, and other external concerns. This separation makes the codebase more robust, testable, and adaptable to change.</p>
+      <ul><li><strong>✅ Example:</strong> Business logic implemented in core domain classes, with infrastructure (UI, database, frameworks) depending on the core, not the other way around.</li>
+      <li><strong>❌ Anti-pattern:</strong> Mixing business logic with infrastructure code, making changes risky and hard to test.</li></ul>
+      <strong>Pros:</strong><ul><li>👍🏻 Improves testability</li><li>👍🏻 Enhances maintainability</li><li>👍🏻 Facilitates adaptability to change</li><li>👍🏻 Promotes separation of concerns</li></ul>
+      <strong>Cons:</strong><ul><li>👎🏻 Can increase initial complexity</li><li>👎🏻 Requires discipline in layering</li><li>👎🏻 May need more upfront design</li></ul>`
+  },
+  {
+    "id": "tdd",
+    "title": "Test Driven Development (TDD)",
+    "icon": "https://img.icons8.com/?size=100&id=42628&format=png&color=000000",
+    "description": "Test Driven Development (TDD) is a software development process where tests are written before code, ensuring functionality and driving design decisions.",
+    "anti-pattern": "Anti-pattern: Writing code first and adding tests later, leading to poor coverage and fragile code.",
+    "pros": ["Improves code quality", "Ensures test coverage", "Facilitates refactoring", "Drives better design", "Reduces bugs"],
+    "cons": ["Can slow initial development", "Requires discipline", "May lead to excessive tests for trivial code"],
+    "details": `<h2>Test Driven Development (TDD)</h2>
+      <p>Test Driven Development (TDD) is a software development approach where developers write automated tests before writing the actual code. The process follows a cycle: write a test, write code to pass the test, and refactor. This ensures that all functionality is covered by tests and helps drive design decisions.</p>
+      <ul><li><strong>✅ Example:</strong> Writing a failing unit test for a new feature, then implementing the feature until the test passes, and finally refactoring the code while keeping all tests green.</li>
+      <li><strong>❌ Anti-pattern:</strong> Writing code first and adding tests later, leading to poor coverage and fragile code.</li></ul>
+      <strong>Pros:</strong><ul><li>👍🏻 Improves code quality</li><li>👍🏻 Ensures test coverage</li><li>👍🏻 Facilitates refactoring</li><li>👍🏻 Drives better design</li><li>👍🏻 Reduces bugs</li></ul>
+      <strong>Cons:</strong><ul><li>👎🏻 Can slow initial development</li><li>👎🏻 Requires discipline</li><li>👎🏻 May lead to excessive tests for trivial code</li></ul>`
+  },
+  {
+    "id": "eventdrivenarchitecture",
+    "title": "Event-Driven Architecture",
+    "icon": "https://img.icons8.com/?size=100&id=12817&format=png&color=000000",
+    "description": "Event-Driven Architecture is a design paradigm where system components communicate by producing and consuming events, enabling loose coupling and real-time responsiveness.",
+    "anti-pattern": "Anti-pattern: Tight coupling between components, direct calls instead of event notifications, making the system hard to scale and maintain.",
+    "pros": ["Enables loose coupling", "Improves scalability", "Supports real-time processing", "Facilitates asynchronous communication"],
+    "cons": ["Can increase system complexity", "Requires robust event management", "May make debugging harder"],
+    "details": `<h2>Event-Driven Architecture</h2>
+      <p>Event-Driven Architecture (EDA) is a software design paradigm where system components communicate by producing and consuming events. This approach enables loose coupling, scalability, and real-time responsiveness, as components react to events rather than direct calls.</p>
+      <ul><li><strong>✅ Example:</strong> A payment service emits a 'PaymentProcessed' event, which is consumed by an email service to send a receipt and by an analytics service to update metrics.</li>
+      <li><strong>❌ Anti-pattern:</strong> Tight coupling between components, direct calls instead of event notifications, making the system hard to scale and maintain.</li></ul>
+      <strong>Pros:</strong><ul><li>👍🏻 Enables loose coupling</li><li>👍🏻 Improves scalability</li><li>👍🏻 Supports real-time processing</li><li>👍🏻 Facilitates asynchronous communication</li></ul>
+      <strong>Cons:</strong><ul><li>👎🏻 Can increase system complexity</li><li>👎🏻 Requires robust event management</li><li>👎🏻 May make debugging harder</li></ul>`
+  },
+  {
+    "id": "cqrs",
+    "title": "Command Query Responsibility Segregation (CQRS)",
+    "icon": "https://img.icons8.com/?size=100&id=NPxhzjDTqEjA&format=png&color=000000",
+    "description": "CQRS separates read and write operations into distinct models, improving scalability, flexibility, and maintainability in complex systems.",
+    "anti-pattern": "Anti-pattern: Using a single model for both reads and writes in complex domains, leading to performance bottlenecks and tangled logic.",
+    "pros": ["Improves scalability", "Enables optimized queries", "Simplifies complex domains", "Facilitates event sourcing"],
+    "cons": ["Adds architectural complexity", "Requires careful synchronization", "May be overkill for simple systems"],
+    "details": `<h2>CQRS (Command Query Responsibility Segregation)</h2>
+      <p>CQRS is an architectural pattern that separates the responsibilities of reading data (queries) and modifying data (commands) into distinct models. This separation allows each side to be optimized independently, improving scalability, flexibility, and maintainability in complex systems.</p>
+      <ul><li><strong>✅ Example:</strong> Using one model to handle user commands (create, update, delete) and a separate model to handle queries for reporting or UI, each with its own data store or schema.</li>
+      <li><strong>❌ Anti-pattern:</strong> Using a single model for both reads and writes in complex domains, leading to performance bottlenecks and tangled logic.</li></ul>
+      <strong>Pros:</strong><ul><li>👍🏻 Improves scalability</li><li>👍🏻 Enables optimized queries</li><li>👍🏻 Simplifies complex domains</li><li>👍🏻 Facilitates event sourcing</li></ul>
+      <strong>Cons:</strong><ul><li>👎🏻 Adds architectural complexity</li><li>👎🏻 Requires careful synchronization</li><li>👎🏻 May be overkill for simple systems</li></ul>`
+  },
+  {
+    "id": "concurrency",
+    "title": "Concurrency",
+    "icon": "https://img.icons8.com/?size=100&id=18688&format=png&color=000000",
+    "description": "Concurrency is the ability of a system to execute multiple tasks simultaneously, requiring careful design to avoid race conditions and deadlocks.",
+    "anti-pattern": "Anti-pattern: Ignoring synchronization, leading to race conditions or deadlocks when multiple threads access shared resources.",
+    "pros": ["Improves performance", "Enables responsive systems", "Utilizes multi-core processors"],
+    "cons": ["Can introduce complex bugs", "Requires careful synchronization", "May cause deadlocks or race conditions"],
+    "details": `<h2>Concurrency</h2>
+      <p>Concurrency is the ability of a system to execute multiple tasks simultaneously, often using threads or processes. While it can improve performance and responsiveness, it requires careful design to avoid issues like race conditions (unpredictable results from unsynchronized access) and deadlocks (tasks waiting forever for resources).</p>
+      <ul><li><strong>✅ Example:</strong> Using locks, semaphores, or atomic operations to ensure only one thread updates a shared resource at a time, and designing resource acquisition order to avoid deadlocks.</li>
+      <li><strong>❌ Anti-pattern:</strong> Ignoring synchronization, leading to race conditions or deadlocks when multiple threads access shared resources.</li></ul>
+      <strong>Pros:</strong><ul><li>👍🏻 Improves performance</li><li>👍🏻 Enables responsive systems</li><li>👍🏻 Utilizes multi-core processors</li></ul>
+      <strong>Cons:</strong><ul><li>👎🏻 Can introduce complex bugs</li><li>👎🏻 Requires careful synchronization</li><li>👎🏻 May cause deadlocks or race conditions</li></ul>`
+  },
+  {
+    "id": "parallelism",
+    "title": "Parallelism",
+    "icon": "https://img.icons8.com/?size=100&id=13542&format=png&color=000000",
+    "description": "Parallelism is the simultaneous execution of multiple tasks or computations, often to maximize resource utilization and speed up processing.",
+    "anti-pattern": "Anti-pattern: Running parallel tasks without proper coordination, leading to resource contention, bottlenecks, or incorrect results.",
+    "pros": ["Speeds up computation", "Utilizes hardware efficiently", "Handles large workloads"],
+    "cons": ["Can be hard to debug", "May cause resource contention", "Requires careful design for correctness"],
+    "details": `<h2>Parallelism</h2>
+      <p>Parallelism is the simultaneous execution of multiple tasks or computations, typically across multiple CPU cores or machines. It is used to maximize resource utilization and speed up processing, especially for large or compute-intensive workloads.</p>
+      <ul><li><strong>✅ Example:</strong> Processing large data sets by dividing the work among multiple threads or processes, each handling a portion of the data at the same time.</li>
+      <li><strong>❌ Anti-pattern:</strong> Running parallel tasks without proper coordination, leading to resource contention, bottlenecks, or incorrect results.</li></ul>
+      <strong>Pros:</strong><ul><li>👍🏻 Speeds up computation</li><li>👍🏻 Utilizes hardware efficiently</li><li>👍🏻 Handles large workloads</li></ul>
+      <strong>Cons:</strong><ul><li>👎🏻 Can be hard to debug</li><li>👎🏻 May cause resource contention</li><li>👎🏻 Requires careful design for correctness</li></ul>`
+  },
+  {
+    "id": "websockets",
+    "title": "WebSockets",
+    "icon": "https://img.icons8.com/?size=100&id=106729&format=png&color=000000",
+    "description": "WebSockets provide full-duplex communication channels over a single TCP connection, enabling real-time, interactive applications like chat, gaming, and live dashboards.",
+    "anti-pattern": "Anti-pattern: Using HTTP polling for real-time updates, causing unnecessary latency and server load.",
+    "pros": ["Enables real-time communication", "Reduces latency", "Efficient use of resources", "Supports bidirectional data flow"],
+    "cons": ["Requires persistent connection management", "May not be supported by all proxies/firewalls", "Can be more complex to scale"],
+    "details": `<h2>WebSockets</h2>
+      <p>WebSockets are a protocol that enables full-duplex, bidirectional communication between client and server over a single, long-lived TCP connection. This allows for real-time data exchange, making WebSockets ideal for applications like chat, gaming, collaborative editing, and live dashboards.</p>
+      <ul><li><strong>✅ Example:</strong> A chat application where messages are instantly delivered to all connected users using WebSocket connections.</li>
+      <li><strong>❌ Anti-pattern:</strong> Using HTTP polling for real-time updates, causing unnecessary latency and server load.</li></ul>
+      <strong>Pros:</strong><ul><li>👍🏻 Enables real-time communication</li><li>👍🏻 Reduces latency</li><li>👍🏻 Efficient use of resources</li><li>👍🏻 Supports bidirectional data flow</li></ul>
+      <strong>Cons:</strong><ul><li>👎🏻 Requires persistent connection management</li><li>👎🏻 May not be supported by all proxies/firewalls</li><li>👎🏻 Can be more complex to scale</li></ul>`
+  },
+  {
+    "id": "graphql",
+    "title": "GraphQL",
+    "icon": "https://img.icons8.com/?size=100&id=zdI5E8moxhs-&format=png&color=000000",
+    "description": "GraphQL is a query language and runtime for APIs that enables clients to request exactly the data they need, reducing over-fetching and under-fetching compared to REST.",
+    "anti-pattern": "Anti-pattern: Using REST endpoints for complex queries, resulting in multiple round-trips and over-fetching of data.",
+    "pros": ["Flexible data retrieval", "Reduces over-fetching/under-fetching", "Single endpoint for all queries", "Strongly typed schema"],
+    "cons": ["Requires schema design and maintenance", "Can expose too much data if not secured", "Complexity for simple use cases"],
+    "details": `<h2>GraphQL</h2>
+      <p>GraphQL is a query language and runtime for APIs that allows clients to specify exactly what data they need, and receive only that data in response. Unlike REST, which often requires multiple endpoints and can lead to over-fetching or under-fetching, GraphQL uses a single endpoint and a strongly typed schema to enable flexible, efficient data retrieval.</p>
+      <ul><li><strong>✅ Example:</strong> A client requests only the user's name and email from a user profile, rather than the entire user object, using a GraphQL query.</li>
+      <li><strong>❌ Anti-pattern:</strong> Using REST endpoints for complex queries, resulting in multiple round-trips and over-fetching of data.</li></ul>
+      <strong>Pros:</strong><ul><li>👍🏻 Flexible data retrieval</li><li>👍🏻 Reduces over-fetching/under-fetching</li><li>👍🏻 Single endpoint for all queries</li><li>👍🏻 Strongly typed schema</li></ul>
+      <strong>Cons:</strong><ul><li>👎🏻 Requires schema design and maintenance</li><li>👎🏻 Can expose too much data if not secured</li><li>👎🏻 Complexity for simple use cases</li></ul>`
+  },
+  {
+    "id": "grpc",
+    "title": "gRPC",
+    "icon": "https://img.icons8.com/?size=100&id=11903&format=png&color=000000",
+    "description": "gRPC is a high-performance, open-source RPC framework that uses HTTP/2 and Protocol Buffers for efficient, strongly-typed communication between services, ideal for microservices and distributed systems.",
+    "anti-pattern": "Anti-pattern: Using REST for high-frequency, low-latency service-to-service communication, resulting in unnecessary overhead and slower performance.",
+    "pros": ["Efficient binary serialization", "Strongly typed contracts", "Supports streaming", "Built-in authentication and load balancing", "Cross-language support"],
+    "cons": ["Requires Protocol Buffers schema", "Not human-readable payloads", "May be overkill for simple APIs", "Limited browser support"],
+    "details": `<h2>gRPC</h2>
+      <p>gRPC is a high-performance, open-source Remote Procedure Call (RPC) framework developed by Google. It uses HTTP/2 for transport, Protocol Buffers for efficient binary serialization, and provides strongly-typed contracts for communication between services. gRPC supports streaming, authentication, and load balancing, making it ideal for microservices and distributed systems.</p>
+      <ul><li><strong>✅ Example:</strong> A microservices architecture where services communicate using gRPC for fast, efficient, and strongly-typed requests and responses.</li>
+      <li><strong>❌ Anti-pattern:</strong> Using REST for high-frequency, low-latency service-to-service communication, resulting in unnecessary overhead and slower performance.</li></ul>
+      <strong>Pros:</strong><ul><li>👍🏻 Efficient binary serialization</li><li>👍🏻 Strongly typed contracts</li><li>👍🏻 Supports streaming</li><li>👍🏻 Built-in authentication and load balancing</li><li>👍🏻 Cross-language support</li></ul>
+      <strong>Cons:</strong><ul><li>👎🏻 Requires Protocol Buffers schema</li><li>👎🏻 Not human-readable payloads</li><li>👎🏻 May be overkill for simple APIs</li><li>👎🏻 Limited browser support</li></ul>`
+  },
+  {
+    "id": "webhook",
+    "title": "Webhook",
+    "icon": "https://img.icons8.com/?size=100&id=24459&format=png&color=000000",
+    "description": "A webhook is a user-defined HTTP callback that allows one system to notify another system in real-time when an event occurs, enabling automation and integration between services.",
+    "anti-pattern": "Anti-pattern: Polling for updates instead of using webhooks, causing unnecessary load and delayed responses.",
+    "pros": ["Enables real-time notifications", "Reduces polling and server load", "Simplifies integration", "Automates workflows"],
+    "cons": ["Requires endpoint security", "Can be hard to debug failures", "Dependent on network reliability", "May need retry logic"],
+    "details": `<h2>Webhook</h2>
+      <p>A webhook is a user-defined HTTP callback that allows one system to notify another system in real-time when a specific event occurs. Webhooks are commonly used to automate workflows and integrate services, such as triggering CI/CD pipelines, sending notifications, or updating external systems.</p>
+      <ul><li><strong>✅ Example:</strong> A payment gateway sends a webhook to your server when a transaction is completed, allowing you to update order status instantly.</li>
+      <li><strong>❌ Anti-pattern:</strong> Polling for updates instead of using webhooks, causing unnecessary load and delayed responses.</li></ul>
+      <strong>Pros:</strong><ul><li>👍🏻 Enables real-time notifications</li><li>👍🏻 Reduces polling and server load</li><li>👍🏻 Simplifies integration</li><li>👍🏻 Automates workflows</li></ul>
+      <strong>Cons:</strong><ul><li>👎🏻 Requires endpoint security</li><li>👎🏻 Can be hard to debug failures</li><li>👎🏻 Dependent on network reliability</li><li>👎🏻 May need retry logic</li></ul>`
+  },
+  {
+    "id": "restapi",
+    "title": "REST API",
+    "icon": "https://img.icons8.com/?size=100&id=21895&format=png&color=000000",
+    "description": "A REST API is an architectural style for designing networked applications, using HTTP methods and stateless communication to expose resources as endpoints, widely used for web services.",
+    "anti-pattern": "Anti-pattern: Ignoring HTTP conventions or using non-standard methods, leading to confusion and poor interoperability.",
+    "pros": ["Simple and widely adopted", "Stateless and scalable", "Uses standard HTTP methods", "Language agnostic"],
+    "cons": ["Can lead to over-fetching/under-fetching", "Limited for complex queries", "No built-in type safety", "May require multiple round-trips"],
+    "details": `<h2>REST API</h2>
+      <p>A REST API (Representational State Transfer) is an architectural style for designing networked applications. It uses standard HTTP methods (GET, POST, PUT, DELETE, etc.) to expose resources as endpoints, and relies on stateless communication between client and server. REST APIs are simple, scalable, and language agnostic, making them the most popular choice for web services.</p>
+      <ul><li><strong>✅ Example:</strong> A web service exposes <code>/users</code> endpoint for GET (fetch users), POST (create user), PUT (update user), and DELETE (remove user) operations.</li>
+      <li><strong>❌ Anti-pattern:</strong> Ignoring HTTP conventions or using non-standard methods, leading to confusion and poor interoperability.</li></ul>
+      <strong>Pros:</strong><ul><li>👍🏻 Simple and widely adopted</li><li>👍🏻 Stateless and scalable</li><li>👍🏻 Uses standard HTTP methods</li><li>👍🏻 Language agnostic</li></ul>
+      <strong>Cons:</strong><ul><li>👎🏻 Can lead to over-fetching/under-fetching</li><li>👎🏻 Limited for complex queries</li><li>👎🏻 No built-in type safety</li><li>👎🏻 May require multiple round-trips</li></ul>`
+  },
+  {
+    "id": "sse",
+    "title": "Server Sent Events (SSE)",
+    "icon": "https://img.icons8.com/?size=100&id=110286&format=png&color=000000",
+    "description": "Server Sent Events (SSE) is a browser API for receiving automatic updates from a server via a single long-lived HTTP connection, ideal for real-time notifications and live data feeds.",
+    "anti-pattern": "Anti-pattern: Using HTTP polling for real-time updates, causing unnecessary latency and server load.",
+    "pros": ["Simple to implement for one-way updates", "Efficient for real-time notifications", "Built-in browser support", "Lightweight compared to WebSockets for one-way data"],
+    "cons": ["One-way communication only (server to client)", "Limited browser support compared to WebSockets", "Not suitable for bidirectional data", "Connection limits in browsers"],
+    "details": `<h2>Server Sent Events (SSE)</h2>
+      <p>Server Sent Events (SSE) is a browser API that allows servers to push real-time updates to clients over a single long-lived HTTP connection. SSE is ideal for scenarios like live notifications, dashboards, or news feeds where the server needs to send data to the client as events occur.</p>
+      <ul><li><strong>✅ Example:</strong> A stock ticker dashboard uses SSE to receive live price updates from the server, updating the UI instantly as new data arrives.</li>
+      <li><strong>❌ Anti-pattern:</strong> Using HTTP polling for real-time updates, causing unnecessary latency and server load.</li></ul>
+      <strong>Pros:</strong><ul><li>👍🏻 Simple to implement for one-way updates</li><li>👍🏻 Efficient for real-time notifications</li><li>👍🏻 Built-in browser support</li><li>👍🏻 Lightweight compared to WebSockets for one-way data</li></ul>
+      <strong>Cons:</strong><ul><li>👎🏻 One-way communication only (server to client)</li><li>👎🏻 Limited browser support compared to WebSockets</li><li>👎🏻 Not suitable for bidirectional data</li><li>👎🏻 Connection limits in browsers</li></ul>`
+  },
+  {
+    "id": "soap",
+    "title": "SOAP (Simple Object Access Protocol)",
+    "icon": "https://img.icons8.com/?size=100&id=13754&format=png&color=000000",
+    "description": "SOAP is a protocol for exchanging structured information in web services using XML over HTTP, supporting strict standards, extensibility, and built-in error handling.",
+    "anti-pattern": "Anti-pattern: Using SOAP for simple, lightweight APIs where REST or GraphQL would be more efficient and easier to implement.",
+    "pros": ["Strict standards and specifications", "Built-in error handling and security", "Supports complex operations and transactions", "Language and platform agnostic", "Extensible via WS-* standards"],
+    "cons": ["Verbose XML payloads", "Can be complex to implement and debug", "Slower than lightweight protocols", "Requires more tooling and configuration", "Less popular for modern web APIs"],
+    "details": `<h2>SOAP (Simple Object Access Protocol)</h2>
+      <p>SOAP is a protocol for exchanging structured information in web services, using XML as its message format and typically HTTP or SMTP as its transport. SOAP supports strict standards, extensibility, and built-in error handling, making it suitable for enterprise applications and complex integrations.</p>
+      <ul><li><strong>✅ Example:</strong> An enterprise system uses SOAP to communicate between CRM and ERP platforms, ensuring reliable, secure, and standardized data exchange.</li>
+      <li><strong>❌ Anti-pattern:</strong> Using SOAP for simple, lightweight APIs where REST or GraphQL would be more efficient and easier to implement.</li></ul>
+      <strong>Pros:</strong><ul><li>👍🏻 Strict standards and specifications</li><li>👍🏻 Built-in error handling and security</li><li>👍🏻 Supports complex operations and transactions</li><li>👍🏻 Language and platform agnostic</li><li>👍🏻 Extensible via WS-* standards</li></ul>
+      <strong>Cons:</strong><ul><li>👎🏻 Verbose XML payloads</li><li>👎🏻 Can be complex to implement and debug</li><li>👎🏻 Slower than lightweight protocols</li><li>👎🏻 Requires more tooling and configuration</li><li>👎🏻 Less popular for modern web APIs</li></ul>`
   }
 ];
 
