@@ -221,15 +221,16 @@
 
         <section class="section">
             <h2>💼 Professional Summary</h2>
-            <p>Senior software engineer with <span class="highlight" id="years-experience">over 12 years</span> of experience delivering robust software solutions, with the last 5 years dedicated to <span class="highlight">cloud-based web applications (Mobile & Desktop)</span>. I specialize in designing <span class="highlight">scalable systems</span> using <span class="highlight">serverless architecture</span>, specifically using <span class="highlight">Microsoft Azure</span> resources (Function Apps, App Services), <span class="highlight">Node.js</span> with <span class="highlight">TypeScript</span>, <span class="highlight">React</span> (CRA and Next.js), and <span class="highlight">relational databases</span> like <span class="highlight">MySQL</span>.</p>
+            <p>Senior software engineer with <span class="highlight" id="years-experience">over 12 years</span> of experience delivering robust software solutions, with the <span class="highlight" id="most-recent-years">last 5 years</span> dedicated to <span class="highlight">cloud-based web applications (Mobile & Desktop)</span>. I specialize in designing <span class="highlight">scalable systems</span> using <span class="highlight">serverless architecture</span>, specifically using <span class="highlight">Microsoft Azure</span> resources (Function Apps, App Services), <span class="highlight">Node.js</span> with <span class="highlight">TypeScript</span>, <span class="highlight">React</span> (CRA and Next.js), and <span class="highlight">relational databases</span> like <span class="highlight">MySQL</span>.</p>
 
             <script>
-            // Calculate years of experience dynamically based on start date (June 2013)
-            const startDate = new Date(2013, 5); // June 2013 (month is 0-indexed)
+            // Calculate years of experience dynamically
             const currentDate = new Date();
-            const yearsExperience = Math.floor((currentDate - startDate) / (1000 * 60 * 60 * 24 * 365.25));
+            const yearsExperience = Math.floor((currentDate - new Date(2013, 5)) / (1000 * 60 * 60 * 24 * 365.25)); // From June 2013
+            const mostRecentYears = Math.floor((currentDate - new Date(2021, 1)) / (1000 * 60 * 60 * 24 * 365.25)); // From Feb 2021
 
             document.getElementById('years-experience').textContent = `over ${yearsExperience} years`;
+            document.getElementById('most-recent-years').textContent = `last ${mostRecentYears} years`;
             </script>
             
             <p>Proven ability to bridge the gap between <span class="highlight">technical and business teams</span> by actively participating in <span class="highlight">product feature design</span>, clarifying requirements with clients, and addressing their pain points through <span class="highlight">face-to-face meetings and discussions</span>.</p>
