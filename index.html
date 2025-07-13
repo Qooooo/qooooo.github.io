@@ -88,6 +88,81 @@
       color: #555;
       text-align: center;
     }
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 1rem;
+      justify-content: center;
+    }
+    .tag {
+      background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+      color: #1976d2;
+      padding: 0.3rem 0.7rem;
+      border-radius: 15px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      border: 1px solid rgba(25, 118, 210, 0.2);
+    }
+    .filter-container {
+      background: white;
+      padding: 1.5rem 2rem;
+      margin: 2rem auto;
+      max-width: 1200px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+    .filter-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #1e2a38;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    .filter-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      justify-content: center;
+    }
+    .filter-tag {
+      background: #f0f0f0;
+      color: #666;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      user-select: none;
+    }
+    .filter-tag:hover {
+      background: #e0e0e0;
+      transform: translateY(-1px);
+    }
+    .filter-tag.active {
+      background: linear-gradient(135deg, #3289c6 0%, #299dc4 100%);
+      color: white;
+      border-color: #1976d2;
+      box-shadow: 0 2px 8px rgba(50, 137, 198, 0.3);
+    }
+    .clear-filters {
+      background: #ff5722;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-left: 1rem;
+    }
+    .clear-filters:hover {
+      background: #e64a19;
+      transform: translateY(-1px);
+    }
     .modal {
       display: none;
       position: fixed;
@@ -131,6 +206,14 @@
   <a href="about.html" class="about-btn">👨🏻‍💻 About Me 🇸🇬</a>
 </nav>
 </header>
+
+<div class="filter-container">
+  <div class="filter-title">Filter by Topics</div>
+  <div class="filter-tags" id="filter-tags">
+    <!-- Filter tags will be dynamically generated -->
+  </div>
+</div>
+
 <main class="container" id="card-container"></main>
 <div class="modal" id="modal">
 <div class="modal-content">
@@ -169,6 +252,7 @@
     "title": "Encapsulation",
     "icon": "https://img.icons8.com/?size=100&id=hBExduFpnYNx&format=png&color=000000",
     "description": "Bundling data (attributes) and methods (functions) that operate on that data within a class, and restricting direct access to some of the object's components.",
+    "tags": ["OOP", "Concept", "Security"],
     "example": "Example: A class with private fields and public getters/setters.",
     "anti-pattern": "Anti-pattern: Exposing internal state directly without methods.",
     "pros": ["Improves modularity", "Protects internal state", "Eases maintenance"],
@@ -185,6 +269,7 @@
     "title": "Polymorphism",
     "icon": "https://img.icons8.com/?size=100&id=12157&format=png&color=000000",
     "description": "Polymorphism is the ability for objects of different classes to be treated as the same type, with the actual behavior of a function call determined by the specific class of the object passed in at runtime.",
+    "tags": ["OOP", "Concept"],
     "anti-pattern": "Anti-pattern: Using type checks and manual dispatch instead of polymorphism.",
     "pros": ["Enables code reuse", "Simplifies code extension", "Supports flexible design"],
     "cons": ["Can make code harder to trace", "May introduce runtime errors if misused"],
@@ -203,6 +288,7 @@
     "title": "SOLID Principles",
     "icon": "https://img.icons8.com/?size=100&id=20840&format=png&color=000000",
     "description": "Five fundamental principles for object-oriented programming and design that promote maintainable, flexible, and robust software architecture. These principles help developers write code that is easier to understand, modify, and extend.",
+    "tags": ["OOP", "Concept", "Architecture"],
     "anti-pattern": "Anti-pattern: Writing monolithic classes that violate multiple SOLID principles, leading to tightly coupled, hard-to-maintain code.",
     "pros": ["Improves maintainability and readability", "Encourages separation of concerns and modularity", "Facilitates testing and debugging", "Reduces code duplication", "Makes code more flexible and extensible"],
     "cons": ["Can increase initial code complexity and development time", "May require more classes and interfaces", "Can lead to over-engineering if applied unnecessarily"],
@@ -218,6 +304,7 @@
     "title": "CAP Theorem",
     "icon": "https://img.icons8.com/?size=100&id=12025&format=png&color=000000",
     "description": "In distributed systems, you can only guarantee two of: Consistency, Availability, Partition Tolerance. Example: CP system sacrifices availability during network partition.",
+    "tags": ["Data Management", "Scalability", "Concept"],
     "anti-pattern": "Anti-pattern: Assuming a distributed system can guarantee all three properties at once.",
     "pros": ["Clarifies trade-offs in distributed systems", "Guides architecture decisions"],
     "cons": ["Can oversimplify real-world systems", "Not all systems fit neatly into CAP categories"],
@@ -233,6 +320,7 @@
     "title": "Inheritance",
     "icon": "https://img.icons8.com/?size=100&id=DkpYfYRyotRl&format=png&color=000000",
     "description": "Mechanism to derive new classes from existing ones. Example: `class Car extends Vehicle {}` inherits attributes and methods.",
+    "tags": ["OOP", "Concept"],
     "anti-pattern": "Anti-pattern: Copy-pasting code instead of using inheritance.",
     "pros": ["Promotes code reuse", "Simplifies extension of functionality"],
     "cons": ["Can lead to tight coupling", "May cause fragile base class problem"],
@@ -248,6 +336,7 @@
     "title": "Microservices",
     "icon": "https://img.icons8.com/?size=100&id=13052&format=png&color=000000",
     "description": "Architectural style that structures an app as a collection of loosely coupled services. Example: User service, order service, and payment service communicate via REST.",
+    "tags": ["Architecture", "Scalability", "Deployment"],
     "anti-pattern": "Anti-pattern: A monolithic application where all logic is in a single codebase.",
     "pros": ["Enables independent deployment", "Improves scalability", "Facilitates technology diversity"],
     "cons": ["Increases operational complexity", "Requires robust inter-service communication", "Can lead to data consistency challenges"],
@@ -263,6 +352,7 @@
     "title": "Domain-Driven Design (DDD)",
     "icon": "https://img.icons8.com/?size=100&id=12289&format=png&color=000000",
     "description": "Focuses on modeling software to match a domain's logic. Example: Bounded Contexts and Ubiquitous Language in large applications.",
+    "tags": ["Architecture", "Concept"],
     "anti-pattern": "Anti-pattern: Designing software without input from domain experts.",
     "pros": ["Aligns software with business needs", "Improves communication between developers and stakeholders"],
     "cons": ["Can be complex to implement", "Requires significant domain knowledge"],
@@ -278,6 +368,7 @@
     "title": "KISS Principle",
     "icon": "https://img.icons8.com/?size=100&id=Nvl7OEzsGckV&format=png&color=000000",
     "description": "Keep It Simple, Stupid (KISS) emphasizes simplicity and clarity in software design and logic, helping avoid over-engineering and making code easier to read and maintain.",
+    "tags": ["Concept"],
     "anti-pattern": "Anti-pattern: Creating overly complex solutions for simple problems, adding unnecessary layers or abstractions.",
     "pros": ["Improves readability", "Reduces maintenance effort", "Minimizes bugs", "Speeds up development"],
     "cons": ["May oversimplify complex requirements", "Can ignore edge cases if too minimalistic"],
@@ -293,6 +384,7 @@
     "title": "Clean Architecture",
     "icon": "https://img.icons8.com/?size=100&id=12850&format=png&color=000000",
     "description": "Clean Architecture keeps business rules at the core, isolated from external concerns, making the codebase more robust, testable, and adaptable to change.",
+    "tags": ["Architecture", "Concept"],
     "anti-pattern": "Anti-pattern: Mixing business logic with infrastructure code, making changes risky and hard to test.",
     "pros": ["Improves testability", "Enhances maintainability", "Facilitates adaptability to change", "Promotes separation of concerns"],
     "cons": ["Can increase initial complexity", "Requires discipline in layering", "May need more upfront design"],
@@ -308,6 +400,7 @@
     "title": "Test Driven Development (TDD)",
     "icon": "https://img.icons8.com/?size=100&id=42628&format=png&color=000000",
     "description": "Test Driven Development (TDD) is a software development process where tests are written before code, ensuring functionality and driving design decisions.",
+    "tags": ["Concept", "Quality"],
     "anti-pattern": "Anti-pattern: Writing code first and adding tests later, leading to poor coverage and fragile code.",
     "pros": ["Improves code quality", "Ensures test coverage", "Facilitates refactoring", "Drives better design", "Reduces bugs"],
     "cons": ["Can slow initial development", "Requires discipline", "May lead to excessive tests for trivial code"],
@@ -323,6 +416,7 @@
     "title": "Event-Driven Architecture",
     "icon": "https://img.icons8.com/?size=100&id=12817&format=png&color=000000",
     "description": "Event-Driven Architecture is a design paradigm where system components communicate by producing and consuming events, enabling loose coupling and real-time responsiveness.",
+    "tags": ["Architecture", "Scalability"],
     "anti-pattern": "Anti-pattern: Tight coupling between components, direct calls instead of event notifications, making the system hard to scale and maintain.",
     "pros": ["Enables loose coupling", "Improves scalability", "Supports real-time processing", "Facilitates asynchronous communication"],
     "cons": ["Can increase system complexity", "Requires robust event management", "May make debugging harder"],
@@ -338,6 +432,7 @@
     "title": "Command Query Responsibility Segregation (CQRS)",
     "icon": "https://img.icons8.com/?size=100&id=NPxhzjDTqEjA&format=png&color=000000",
     "description": "CQRS separates read and write operations into distinct models, improving scalability, flexibility, and maintainability in complex systems.",
+    "tags": ["Architecture", "Data Management", "Scalability"],
     "anti-pattern": "Anti-pattern: Using a single model for both reads and writes in complex domains, leading to performance bottlenecks and tangled logic.",
     "pros": ["Improves scalability", "Enables optimized queries", "Simplifies complex domains", "Facilitates event sourcing"],
     "cons": ["Adds architectural complexity", "Requires careful synchronization", "May be overkill for simple systems"],
@@ -353,6 +448,7 @@
     "title": "Concurrency",
     "icon": "https://img.icons8.com/?size=100&id=18688&format=png&color=000000",
     "description": "Concurrency is the ability of a system to execute multiple tasks simultaneously, requiring careful design to avoid race conditions and deadlocks.",
+    "tags": ["Concept", "Scalability"],
     "anti-pattern": "Anti-pattern: Ignoring synchronization, leading to race conditions or deadlocks when multiple threads access shared resources.",
     "pros": ["Improves performance", "Enables responsive systems", "Utilizes multi-core processors"],
     "cons": ["Can introduce complex bugs", "Requires careful synchronization", "May cause deadlocks or race conditions"],
@@ -368,6 +464,7 @@
     "title": "Parallelism",
     "icon": "https://img.icons8.com/?size=100&id=13542&format=png&color=000000",
     "description": "Parallelism is the simultaneous execution of multiple tasks or computations, often to maximize resource utilization and speed up processing.",
+    "tags": ["Concept", "Scalability"],
     "anti-pattern": "Anti-pattern: Running parallel tasks without proper coordination, leading to resource contention, bottlenecks, or incorrect results.",
     "pros": ["Speeds up computation", "Utilizes hardware efficiently", "Handles large workloads"],
     "cons": ["Can be hard to debug", "May cause resource contention", "Requires careful design for correctness"],
@@ -383,6 +480,7 @@
     "title": "WebSockets",
     "icon": "https://img.icons8.com/?size=100&id=106729&format=png&color=000000",
     "description": "WebSockets provide full-duplex communication channels over a single TCP connection, enabling real-time, interactive applications like chat, gaming, and live dashboards.",
+    "tags": ["Communication", "Real-time"],
     "anti-pattern": "Anti-pattern: Using HTTP polling for real-time updates, causing unnecessary latency and server load.",
     "pros": ["Enables real-time communication", "Reduces latency", "Efficient use of resources", "Supports bidirectional data flow"],
     "cons": ["Requires persistent connection management", "May not be supported by all proxies/firewalls", "Can be more complex to scale"],
@@ -398,6 +496,7 @@
     "title": "GraphQL",
     "icon": "https://img.icons8.com/?size=100&id=zdI5E8moxhs-&format=png&color=000000",
     "description": "GraphQL is a query language and runtime for APIs that enables clients to request exactly the data they need, reducing over-fetching and under-fetching compared to REST.",
+    "tags": ["API", "Data Management"],
     "anti-pattern": "Anti-pattern: Using REST endpoints for complex queries, resulting in multiple round-trips and over-fetching of data.",
     "pros": ["Flexible data retrieval", "Reduces over-fetching/under-fetching", "Single endpoint for all queries", "Strongly typed schema"],
     "cons": ["Requires schema design and maintenance", "Can expose too much data if not secured", "Complexity for simple use cases"],
@@ -413,6 +512,7 @@
     "title": "gRPC",
     "icon": "https://img.icons8.com/?size=100&id=11903&format=png&color=000000",
     "description": "gRPC is a high-performance, open-source RPC framework that uses HTTP/2 and Protocol Buffers for efficient, strongly-typed communication between services, ideal for microservices and distributed systems.",
+    "tags": ["API", "Communication", "Scalability"],
     "anti-pattern": "Anti-pattern: Using REST for high-frequency, low-latency service-to-service communication, resulting in unnecessary overhead and slower performance.",
     "pros": ["Efficient binary serialization", "Strongly typed contracts", "Supports streaming", "Built-in authentication and load balancing", "Cross-language support"],
     "cons": ["Requires Protocol Buffers schema", "Not human-readable payloads", "May be overkill for simple APIs", "Limited browser support"],
@@ -428,6 +528,7 @@
     "title": "Webhook",
     "icon": "https://img.icons8.com/?size=100&id=24459&format=png&color=000000",
     "description": "A webhook is a user-defined HTTP callback that allows one system to notify another system in real-time when an event occurs, enabling automation and integration between services.",
+    "tags": ["Communication", "Integration"],
     "anti-pattern": "Anti-pattern: Polling for updates instead of using webhooks, causing unnecessary load and delayed responses.",
     "pros": ["Enables real-time notifications", "Reduces polling and server load", "Simplifies integration", "Automates workflows"],
     "cons": ["Requires endpoint security", "Can be hard to debug failures", "Dependent on network reliability", "May need retry logic"],
@@ -443,6 +544,7 @@
     "title": "REST API",
     "icon": "https://img.icons8.com/?size=100&id=21895&format=png&color=000000",
     "description": "A REST API is an architectural style for designing networked applications, using HTTP methods and stateless communication to expose resources as endpoints, widely used for web services.",
+    "tags": ["API", "Communication"],
     "anti-pattern": "Anti-pattern: Ignoring HTTP conventions or using non-standard methods, leading to confusion and poor interoperability.",
     "pros": ["Simple and widely adopted", "Stateless and scalable", "Uses standard HTTP methods", "Language agnostic"],
     "cons": ["Can lead to over-fetching/under-fetching", "Limited for complex queries", "No built-in type safety", "May require multiple round-trips"],
@@ -458,6 +560,7 @@
     "title": "Server Sent Events (SSE)",
     "icon": "https://img.icons8.com/?size=100&id=110286&format=png&color=000000",
     "description": "Server Sent Events (SSE) is a browser API for receiving automatic updates from a server via a single long-lived HTTP connection, ideal for real-time notifications and live data feeds.",
+    "tags": ["Communication", "Real-time"],
     "anti-pattern": "Anti-pattern: Using HTTP polling for real-time updates, causing unnecessary latency and server load.",
     "pros": ["Simple to implement for one-way updates", "Efficient for real-time notifications", "Built-in browser support", "Lightweight compared to WebSockets for one-way data"],
     "cons": ["One-way communication only (server to client)", "Limited browser support compared to WebSockets", "Not suitable for bidirectional data", "Connection limits in browsers"],
@@ -473,6 +576,7 @@
     "title": "Simple Object Access Protocol (SOAP)",
     "icon": "https://img.icons8.com/?size=100&id=13754&format=png&color=000000",
     "description": "SOAP is a protocol for exchanging structured information in web services using XML over HTTP, supporting strict standards, extensibility, and built-in error handling.",
+    "tags": ["API", "Communication"],
     "anti-pattern": "Anti-pattern: Using SOAP for simple, lightweight APIs where REST or GraphQL would be more efficient and easier to implement.",
     "pros": ["Strict standards and specifications", "Built-in error handling and security", "Supports complex operations and transactions", "Language and platform agnostic", "Extensible via WS-* standards"],
     "cons": ["Verbose XML payloads", "Can be complex to implement and debug", "Slower than lightweight protocols", "Requires more tooling and configuration", "Less popular for modern web APIs"],
@@ -482,6 +586,295 @@
       <li><strong>❌ Anti-pattern:</strong> Using SOAP for simple, lightweight APIs where REST or GraphQL would be more efficient and easier to implement.</li></ul>
       <strong>Pros:</strong><ul><li>👍🏻 Strict standards and specifications</li><li>👍🏻 Built-in error handling and security</li><li>👍🏻 Supports complex operations and transactions</li><li>👍🏻 Language and platform agnostic</li><li>👍🏻 Extensible via WS-* standards</li></ul>
       <strong>Cons:</strong><ul><li>👎🏻 Verbose XML payloads</li><li>👎🏻 Can be complex to implement and debug</li><li>👎🏻 Slower than lightweight protocols</li><li>👎🏻 Requires more tooling and configuration</li><li>👎🏻 Less popular for modern web APIs</li></ul>`
+  },
+  {
+    "id": "publishsubscribe",
+    "title": "Publish & Subscribe (Pub-Sub)",
+    "icon": "https://img.icons8.com/?size=100&id=fOhLNqGJsUbJ&format=png&color=000000",
+    "description": "A messaging pattern where publishers send messages to topics, and subscribers receive messages from those topics, enabling decoupled communication between components.",
+    "tags": ["Architecture", "Communication", "Scalability"],
+    "example": "Example: A news service publishes articles to a topic, and users subscribe to receive updates.",
+    "anti-pattern": "Anti-pattern: Directly coupling senders and receivers, making changes risky and reducing scalability.",
+    "pros": ["Decouples components", "Improves scalability", "Supports asynchronous communication", "Facilitates event-driven systems"],
+    "cons": ["Can make debugging harder", "Requires robust message management", "Potential for message loss or duplication"],
+    "details": `<h2>Publish & Subscribe</h2>
+      <p>The Publish & Subscribe (Pub/Sub) pattern is a messaging paradigm where publishers send messages to topics, and subscribers receive messages from those topics. This enables decoupled, scalable, and asynchronous communication between system components.</p>
+      <ul><li><strong>✅ Example:</strong> A news service publishes articles to a topic, and users subscribe to receive updates.</li>
+      <li><strong>❌ Anti-pattern:</strong> Directly coupling senders and receivers, making changes risky and reducing scalability.</li></ul>
+      <strong>Pros:</strong><ul><li>👍🏻 Decouples components</li><li>👍🏻 Improves scalability</li><li>👍🏻 Supports asynchronous communication</li><li>👍🏻 Facilitates event-driven systems</li></ul>
+      <strong>Cons:</strong><ul><li>👎🏻 Can make debugging harder</li><li>👎🏻 Requires robust message management</li><li>👎🏻 Potential for message loss or duplication</li></ul>`
+  },
+  {
+    "id": "eventsourcing",
+    "title": "Event Sourcing",
+    "icon": "https://img.icons8.com/?size=100&id=TWXZ8VcqXDjQ&format=png&color=000000",
+    "description": "A pattern where state changes are stored as a sequence of events, allowing reconstruction of state and auditability.",
+    "tags": ["Data Management", "Observability"],
+    "example": "Example: An order system records every change (created, updated, shipped) as an event, and rebuilds order state from the event log.",
+    "anti-pattern": "Anti-pattern: Storing only the current state, losing history and audit trail.",
+    "pros": ["Provides full audit trail", "Enables time travel and replay", "Supports complex business logic", "Improves reliability"],
+    "cons": ["Can increase storage needs", "Requires careful event design", "May complicate querying and reporting"],
+    "details": `<h2>Event Sourcing</h2>
+      <p>Event Sourcing is a pattern where all changes to application state are stored as a sequence of events. The current state is rebuilt by replaying these events, providing a complete history and auditability.</p>
+      <ul><li><strong>✅ Example:</strong> An order system records every change (created, updated, shipped) as an event, and rebuilds order state from the event log.</li>
+      <li><strong>❌ Anti-pattern:</strong> Storing only the current state, losing history and audit trail.</li></ul>
+      <strong>Pros:</strong><ul><li>👍🏻 Provides full audit trail</li><li>👍🏻 Enables time travel and replay</li><li>👍🏻 Supports complex business logic</li><li>👍🏻 Improves reliability</li></ul>
+      <strong>Cons:</strong><ul><li>👎🏻 Can increase storage needs</li><li>👎🏻 Requires careful event design</li><li>👎🏻 May complicate querying and reporting</li></ul>`
+  },
+  {
+    "id": "messagequeue",
+    "title": "Message Queue",
+    "icon": "https://img.icons8.com/?size=100&id=71474&format=png&color=000000",
+    "description": "A communication pattern where messages are sent to a queue and processed asynchronously, enabling decoupling and reliable delivery between producers and consumers.",
+    "tags": ["Architecture", "Communication", "Scalability"],
+    "example": "Example: An e-commerce site places order messages in a queue, and a worker processes them for shipping.",
+    "anti-pattern": "Anti-pattern: Directly calling downstream services synchronously, risking failures and tight coupling.",
+    "pros": ["Decouples producers and consumers", "Improves reliability and scalability", "Supports asynchronous processing", "Handles spikes in workload"],
+    "cons": ["Adds operational complexity", "Requires queue management", "Potential for message delays or duplication"],
+    "details": `<h2>Message Queue</h2>
+      <p>A Message Queue is a communication pattern where messages are sent to a queue and processed asynchronously by consumers. This enables decoupling, reliability, and scalability in distributed systems.</p>
+      <ul><li><strong>✅ Example:</strong> An e-commerce site places order messages in a queue, and a worker processes them for shipping.</li>
+      <li><strong>❌ Anti-pattern:</strong> Directly calling downstream services synchronously, risking failures and tight coupling.</li></ul>
+      <strong>Pros:</strong><ul><li>👍🏻 Decouples producers and consumers</li><li>👍🏻 Improves reliability and scalability</li><li>👍🏻 Supports asynchronous processing</li><li>👍🏻 Handles spikes in workload</li></ul>
+      <strong>Cons:</strong><ul><li>👎🏻 Adds operational complexity</li><li>👎🏻 Requires queue management</li><li>👎🏻 Potential for message delays or duplication</li></ul>`
+  },
+  {
+    "id": "bff",
+    "title": "Backend For Frontend (BFF)",
+    "icon": "https://img.icons8.com/?size=100&id=TEp2t0ShAlfP&format=png&color=000000",
+    "description": "A pattern where a dedicated backend is built for each frontend or client type, optimizing APIs and logic for specific user experiences.",
+    "tags": ["Architecture", "API"],
+    "example": "Example: A mobile app and a web app each have their own BFF, tailoring data and endpoints for their needs.",
+    "anti-pattern": "Anti-pattern: Using a single generic backend for all clients, leading to bloated APIs and poor user experience.",
+    "pros": ["Optimizes client experience", "Simplifies frontend logic", "Improves security and performance", "Enables rapid iteration"],
+    "cons": ["Can increase maintenance overhead", "May duplicate logic across BFFs", "Requires careful API design"],
+    "details": `<h2>Backend For Frontend (BFF)</h2>
+      <p>Backend For Frontend (BFF) is a pattern where a dedicated backend is built for each frontend or client type, optimizing APIs and logic for specific user experiences. This approach simplifies frontend development and improves performance.</p>
+      <ul><li><strong>✅ Example:</strong> A mobile app and a web app each have their own BFF, tailoring data and endpoints for their needs.</li>
+      <li><strong>❌ Anti-pattern:</strong> Using a single generic backend for all clients, leading to bloated APIs and poor user experience.</li></ul>
+      <strong>Pros:</strong><ul><li>👍🏻 Optimizes client experience</li><li>👍🏻 Simplifies frontend logic</li><li>👍🏻 Improves security and performance</li><li>👍🏻 Enables rapid iteration</li></ul>
+      <strong>Cons:</strong><ul><li>👎🏻 Can increase maintenance overhead</li><li>👎🏻 May duplicate logic across BFFs</li><li>👎🏻 Requires careful API design</li></ul>`
+  },
+  {
+    "id": "monolithicarchitecture",
+    "title": "Monolithic Architecture",
+    "icon": "https://img.icons8.com/?size=100&id=2dHAlXzCRQRl&format=png&color=000000",
+    "description": "A software architecture where all components and functions are combined into a single, unified codebase and deployed as one unit.",
+    "tags": ["Architecture", "Deployment"],
+    "example": "Example: A web application where UI, business logic, and data access are all in one project and deployed together.",
+    "anti-pattern": "Anti-pattern: Adding unrelated features to the same codebase, making it harder to maintain and scale.",
+    "pros": ["Simple to develop and deploy", "Easy to test locally", "No inter-service communication overhead", "Centralized management"],
+    "cons": ["Harder to scale parts independently", "Can become tightly coupled and hard to maintain", "Risk of large deployments causing downtime", "Difficult to adopt new technologies"],
+    "details": `<h2>Monolithic Architecture</h2>
+      <p>Monolithic Architecture is a software design where all components and functions are combined into a single, unified codebase and deployed as one unit. This approach is simple but can lead to maintenance and scaling challenges as the application grows.</p>
+      <ul><li><strong>✅ Example:</strong> A web application where UI, business logic, and data access are all in one project and deployed together.</li>
+      <li><strong>❌ Anti-pattern:</strong> Adding unrelated features to the same codebase, making it harder to maintain and scale.</li></ul>
+      <strong>Pros:</strong><ul><li>👍🏻 Simple to develop and deploy</li><li>👍🏻 Easy to test locally</li><li>👍🏻 No inter-service communication overhead</li><li>👍🏻 Centralized management</li></ul>
+      <strong>Cons:</strong><ul><li>👎🏻 Harder to scale parts independently</li><li>👎🏻 Can become tightly coupled and hard to maintain</li><li>👎🏻 Risk of large deployments causing downtime</li><li>👎🏻 Difficult to adopt new technologies</li></ul>`
+  },
+  {
+    "id": "clientserverarchitecture",
+    "title": "Client-Server Architecture",
+    "icon": "https://img.icons8.com/?size=100&id=WCzcUZyzJoTE&format=png&color=000000",
+    "description": "A model where clients request services and resources from centralized servers, enabling separation of concerns and resource sharing.",
+    "tags": ["Architecture"],
+    "example": "Example: A web browser (client) requests web pages from a web server.",
+    "anti-pattern": "Anti-pattern: Mixing client and server logic, leading to security and maintainability issues.",
+    "pros": ["Enables resource sharing", "Separates concerns", "Centralizes management and security", "Scales to many clients"],
+    "cons": ["Server can be a single point of failure", "Requires network connectivity", "Can introduce latency", "May need load balancing for scale"],
+    "details": `<h2>Client-Server Architecture</h2>
+      <p>Client-Server Architecture is a model where clients request services and resources from centralized servers. This separation enables resource sharing, centralized management, and scalability.</p>
+      <ul><li><strong>✅ Example:</strong> A web browser (client) requests web pages from a web server.</li>
+      <li><strong>❌ Anti-pattern:</strong> Mixing client and server logic, leading to security and maintainability issues.</li></ul>
+      <strong>Pros:</strong><ul><li>👍🏻 Enables resource sharing</li><li>👍🏻 Separates concerns</li><li>👍🏻 Centralizes management and security</li><li>👍🏻 Scales to many clients</li></ul>
+      <strong>Cons:</strong><ul><li>👎🏻 Server can be a single point of failure</li><li>👎🏻 Requires network connectivity</li><li>👎🏻 Can introduce latency</li><li>👎🏻 May need load balancing for scale</li></ul>`
+  },
+  {
+    "id": "layeredarchitecture",
+    "title": "Layered (N-Tier) Architecture",
+    "icon": "https://img.icons8.com/?size=100&id=13803&format=png&color=000000",
+    "description": "A software architecture that organizes code into layers (e.g., presentation, business logic, data access), each with distinct responsibilities and clear separation.",
+    "tags": ["Architecture"],
+    "example": "Example: A web app with a UI layer, a service layer for business logic, and a data layer for database access.",
+    "anti-pattern": "Anti-pattern: Mixing logic across layers, causing tight coupling and maintenance headaches.",
+    "pros": ["Improves separation of concerns", "Facilitates testing and maintenance", "Enables team specialization", "Supports scalability"],
+    "cons": ["Can add complexity and overhead", "May introduce performance bottlenecks", "Requires discipline to maintain boundaries"],
+    "details": `<h2>Layered (N-Tier) Architecture</h2>
+      <p>Layered Architecture organizes code into layers, such as presentation, business logic, and data access. Each layer has distinct responsibilities and interacts only with adjacent layers, improving maintainability and scalability.</p>
+      <ul><li><strong>✅ Example:</strong> A web app with a UI layer, a service layer for business logic, and a data layer for database access.</li>
+      <li><strong>❌ Anti-pattern:</strong> Mixing logic across layers, causing tight coupling and maintenance headaches.</li></ul>
+      <strong>Pros:</strong><ul><li>👍🏻 Improves separation of concerns</li><li>👍🏻 Facilitates testing and maintenance</li><li>👍🏻 Enables team specialization</li><li>👍🏻 Supports scalability</li></ul>
+      <strong>Cons:</strong><ul><li>👎🏻 Can add complexity and overhead</li><li>👎🏻 May introduce performance bottlenecks</li><li>👎🏻 Requires discipline to maintain boundaries</li></ul>`
+  },
+  {
+    "id": "soa",
+    "title": "Service Oriented Architecture (SOA)",
+    "icon": "https://img.icons8.com/?size=100&id=DN5mpaWsNLUM&format=png&color=000000",
+    "description": "An architectural style where software components are provided as services, communicating over a network using standard protocols.",
+    "tags": ["Architecture", "Communication"],
+    "example": "Example: An enterprise system where billing, inventory, and shipping are separate services communicating via SOAP or REST.",
+    "anti-pattern": "Anti-pattern: Building tightly coupled services that depend on each other's internal details, reducing flexibility.",
+    "pros": ["Promotes reuse and modularity", "Enables integration across platforms", "Improves scalability and flexibility", "Supports distributed systems"],
+    "cons": ["Can add complexity and overhead", "Requires robust service management", "May introduce latency and security challenges"],
+    "details": `<h2>Service Oriented Architecture (SOA)</h2>
+      <p>SOA is an architectural style where software components are provided as services, communicating over a network using standard protocols. SOA typically uses an Enterprise Service Bus (ESB) for message routing, transformation, and integration. Services in SOA often share infrastructure and databases, in contrast to Microservice architecture, which favors independent infrastructure and data stores for each service.</p>
+      <ul><li><strong>✅ Example:</strong> An enterprise system where billing, inventory, and shipping are separate services communicating via SOAP or REST.</li>
+      <li><strong>❌ Anti-pattern:</strong> Building tightly coupled services that depend on each other's internal details, reducing flexibility.</li></ul>
+      <strong>Pros:</strong><ul><li>👍🏻 Promotes reuse and modularity</li><li>👍🏻 Enables integration across platforms</li><li>👍🏻 Improves scalability and flexibility</li><li>👍🏻 Supports distributed systems</li></ul>
+      <strong>Cons:</strong><ul><li>👎🏻 Can add complexity and overhead</li><li>👎🏻 Requires robust service management</li><li>👎🏻 May introduce latency and security challenges</li></ul>`
+  },
+  {
+    "id": "sidecar",
+    "title": "Sidecar Pattern",
+    "icon": "https://img.icons8.com/?size=100&id=EnKf0apONMn3&format=png&color=000000",
+    "description": "Deploys a helper or utility service alongside a main application, sharing the same environment but running as a separate process/container.",
+    "tags": ["Deployment", "Architecture", "Resiliency"],
+    "example": "Example: A logging or monitoring agent deployed as a sidecar to a microservice.",
+    "anti-pattern": "Anti-pattern: Bundling unrelated logic into the main service, increasing complexity and reducing maintainability.",
+    "pros": ["Improves modularity", "Enables separation of concerns", "Simplifies upgrades"],
+    "cons": ["Can increase resource usage", "Requires orchestration support"],
+    "details": `<h2>Sidecar Pattern</h2>
+      <p>The Sidecar pattern deploys a helper or utility service alongside a main application, sharing the same environment but running as a separate process or container. Commonly used for logging, monitoring, or proxying.</p>
+      <ul><li><strong>✅ Example:</strong> A logging agent deployed as a sidecar to a microservice.</li>
+      <li><strong>❌ Anti-pattern:</strong> Bundling unrelated logic into the main service, increasing complexity and reducing maintainability.</li></ul>
+      <strong>Pros:</strong><ul><li>👍🏻 Improves modularity</li><li>👍🏻 Enables separation of concerns</li><li>👍🏻 Simplifies upgrades</li></ul>
+      <strong>Cons:</strong><ul><li>👎🏻 Can increase resource usage</li><li>👎🏻 Requires orchestration support</li></ul>`
+  },
+  {
+    "id": "ambassador",
+    "title": "Ambassador Pattern",
+    "icon": "https://img.icons8.com/?size=100&id=HYcGuVv64Nng&format=png&color=000000",
+    "description": "Uses a helper service to proxy or mediate communication between an application and external systems, handling cross-cutting concerns like authentication, logging, or protocol translation.",
+    "tags": ["Deployment", "Architecture", "Security"],
+    "example": "Example: An API gateway acting as an ambassador for microservices.",
+    "anti-pattern": "Anti-pattern: Directly exposing internal services to external clients without mediation.",
+    "pros": ["Centralizes cross-cutting concerns", "Improves security", "Simplifies integration"],
+    "cons": ["Can introduce latency", "May become a bottleneck"],
+    "details": `<h2>Ambassador Pattern</h2>
+      <p>The Ambassador pattern uses a helper service to proxy or mediate communication between an application and external systems, handling cross-cutting concerns such as authentication, logging, or protocol translation.</p>
+      <ul><li><strong>✅ Example:</strong> An API gateway acting as an ambassador for microservices.</li>
+      <li><strong>❌ Anti-pattern:</strong> Directly exposing internal services to external clients without mediation.</li></ul>
+      <strong>Pros:</strong><ul><li>👍🏻 Centralizes cross-cutting concerns</li><li>👍🏻 Improves security</li><li>👍🏻 Simplifies integration</li></ul>
+      <strong>Cons:</strong><ul><li>👎🏻 Can introduce latency</li><li>👎🏻 May become a bottleneck</li></ul>`
+  },
+  {
+    "id": "adapter",
+    "title": "Adapter Pattern (Deployment)",
+    "icon": "https://img.icons8.com/?size=100&id=19799&format=png&color=000000",
+    "description": "Introduces a component that adapts or transforms interfaces between incompatible systems, enabling legacy or third-party integration during deployment.",
+    "tags": ["Deployment", "Integration", "Architecture"],
+    "example": "Example: An adapter that translates legacy system protocols to REST for a new microservice.",
+    "anti-pattern": "Anti-pattern: Forcing direct integration between incompatible systems, leading to fragile code.",
+    "pros": ["Enables legacy integration", "Improves flexibility", "Reduces code changes"],
+    "cons": ["Can add complexity", "May introduce performance overhead"],
+    "details": `<h2>Adapter Pattern (Deployment)</h2>
+      <p>The Adapter pattern introduces a component that adapts or transforms interfaces between incompatible systems, enabling legacy or third-party integration during deployment.</p>
+      <ul><li><strong>✅ Example:</strong> An adapter that translates legacy system protocols to REST for a new microservice.</li>
+      <li><strong>❌ Anti-pattern:</strong> Forcing direct integration between incompatible systems, leading to fragile code.</li></ul>
+      <strong>Pros:</strong><ul><li>👍🏻 Enables legacy integration</li><li>👍🏻 Improves flexibility</li><li>👍🏻 Reduces code changes</li></ul>
+      <strong>Cons:</strong><ul><li>👎🏻 Can add complexity</li><li>👎🏻 May introduce performance overhead</li></ul>`
+  },
+  {
+    "id": "stranglerfig",
+    "title": "Strangler Fig Pattern",
+    "icon": "https://img.icons8.com/?size=100&id=15188&format=png&color=000000",
+    "description": "Incrementally replaces legacy systems by routing new functionality to a new service, gradually 'strangling' the old system until it can be retired.",
+    "tags": ["Deployment", "Architecture", "Resiliency"],
+    "example": "Example: Migrating a monolithic app to microservices by redirecting specific endpoints to new services.",
+    "anti-pattern": "Anti-pattern: Big-bang rewrites that risk downtime and loss of functionality.",
+    "pros": ["Reduces migration risk", "Enables gradual transition", "Minimizes downtime"],
+    "cons": ["Requires careful routing", "Can increase operational complexity"],
+    "details": `<h2>Strangler Fig Pattern</h2>
+      <p>The Strangler Fig pattern incrementally replaces legacy systems by routing new functionality to a new service, gradually 'strangling' the old system until it can be retired.</p>
+      <ul><li><strong>✅ Example:</strong> Migrating a monolithic app to microservices by redirecting specific endpoints to new services.</li>
+      <li><strong>❌ Anti-pattern:</strong> Big-bang rewrites that risk downtime and loss of functionality.</li></ul>
+      <strong>Pros:</strong><ul><li>👍🏻 Reduces migration risk</li><li>👍🏻 Enables gradual transition</li><li>👍🏻 Minimizes downtime</li></ul>
+      <strong>Cons:</strong><ul><li>👎🏻 Requires careful routing</li><li>👎🏻 Can increase operational complexity</li></ul>`
+  },
+  {
+    "id": "bulkhead",
+    "title": "Bulkhead Pattern",
+    "icon": "https://img.icons8.com/?size=100&id=37155&format=png&color=000000",
+    "description": "Isolates components or resources into separate partitions to prevent failures from cascading, improving system resiliency during deployment and operation.",
+    "tags": ["Deployment", "Resiliency", "Architecture"],
+    "example": "Example: Partitioning microservices so a failure in one does not affect others.",
+    "anti-pattern": "Anti-pattern: Sharing resources across all services, allowing a single failure to impact the entire system.",
+    "pros": ["Improves fault isolation", "Enhances resiliency", "Limits blast radius"],
+    "cons": ["Can increase resource usage", "Requires careful design"],
+    "details": `<h2>Bulkhead Pattern</h2>
+      <p>The Bulkhead pattern isolates components or resources into separate partitions to prevent failures from cascading, improving system resiliency during deployment and operation.</p>
+      <ul><li><strong>✅ Example:</strong> Partitioning microservices so a failure in one does not affect others.</li>
+      <li><strong>❌ Anti-pattern:</strong> Sharing resources across all services, allowing a single failure to impact the entire system.</li></ul>
+      <strong>Pros:</strong><ul><li>👍🏻 Improves fault isolation</li><li>👍🏻 Enhances resiliency</li><li>👍🏻 Limits blast radius</li></ul>
+      <strong>Cons:</strong><ul><li>👎🏻 Can increase resource usage</li><li>👎🏻 Requires careful design</li></ul>`
+  },
+  {
+    "id": "servicemesh",
+    "title": "Service Mesh",
+    "icon": "https://img.icons8.com/?size=100&id=18590&format=png&color=000000",
+    "description": "A dedicated infrastructure layer for managing service-to-service communication, security, and observability in microservices deployments.",
+    "tags": ["Deployment", "Architecture", "Observability", "Security"],
+    "example": "Example: Istio or Linkerd providing traffic management, security, and monitoring for microservices.",
+    "anti-pattern": "Anti-pattern: Hardcoding communication logic and security into each service.",
+    "pros": ["Centralizes communication management", "Improves security", "Enhances observability"],
+    "cons": ["Can add operational complexity", "Requires additional infrastructure"],
+    "details": `<h2>Service Mesh</h2>
+      <p>A Service Mesh is a dedicated infrastructure layer for managing service-to-service communication, security, and observability in microservices deployments.</p>
+      <ul><li><strong>✅ Example:</strong> Istio or Linkerd providing traffic management, security, and monitoring for microservices.</li>
+      <li><strong>❌ Anti-pattern:</strong> Hardcoding communication logic and security into each service.</li></ul>
+      <strong>Pros:</strong><ul><li>👍🏻 Centralizes communication management</li><li>👍🏻 Improves security</li><li>👍🏻 Enhances observability</li></ul>
+      <strong>Cons:</strong><ul><li>👎🏻 Can add operational complexity</li><li>👎🏻 Requires additional infrastructure</li></ul>`
+  },
+  {
+    "id": "canary",
+    "title": "Canary Deployment",
+    "icon": "https://img.icons8.com/?size=100&id=CFFVJs7cRGxS&format=png&color=000000",
+    "description": "Releases new versions of software to a small subset of users before rolling out to everyone, reducing risk and enabling rapid rollback if issues are detected.",
+    "tags": ["Deployment", "Resiliency", "Architecture"],
+    "example": "Example: Deploying a new feature to 5% of users, monitoring for errors, then expanding rollout.",
+    "anti-pattern": "Anti-pattern: Deploying changes to all users at once, risking widespread outages.",
+    "pros": ["Reduces deployment risk", "Enables rapid rollback", "Improves reliability"],
+    "cons": ["Requires monitoring and automation", "Can complicate release management"],
+    "details": `<h2>Canary Deployment</h2>
+      <p>Canary deployment releases new versions of software to a small subset of users before rolling out to everyone, reducing risk and enabling rapid rollback if issues are detected.</p>
+      <ul><li><strong>✅ Example:</strong> Deploying a new feature to 5% of users, monitoring for errors, then expanding rollout.</li>
+      <li><strong>❌ Anti-pattern:</strong> Deploying changes to all users at once, risking widespread outages.</li></ul>
+      <strong>Pros:</strong><ul><li>👍🏻 Reduces deployment risk</li><li>👍🏻 Enables rapid rollback</li><li>👍🏻 Improves reliability</li></ul>
+      <strong>Cons:</strong><ul><li>👎🏻 Requires monitoring and automation</li><li>👎🏻 Can complicate release management</li></ul>`
+  },
+  {
+    "id": "bluegreen",
+    "title": "Blue-Green Deployment",
+    "icon": "https://img.icons8.com/?size=100&id=63318&format=png&color=000000",
+    "description": "Maintains two identical production environments, Blue and Green. Only one is live at a time, serving all traffic. The new version is deployed to the idle environment, and traffic is switched over once verified.",
+    "tags": ["Deployment", "Resiliency", "Architecture"],
+    "example": "Example: Blue environment serves 100% of traffic. Green is updated and tested. Switch traffic to Green if tests pass.",
+    "anti-pattern": "Anti-pattern: Deploying to the live environment without a fallback, risking downtime and rollback complexity.",
+    "pros": ["Minimizes downtime", "Enables quick rollback", "Isolates issues in the inactive environment"],
+    "cons": ["Requires double the resources", "Can complicate network routing", "May introduce latency during switch"],
+    "details": `<h2>Blue-Green Deployment</h2>
+      <p>Blue-Green Deployment is a release management strategy that reduces downtime and risk by running two identical production environments, Blue and Green. Only one environment is live at any time, serving all production traffic. The new application version is deployed to the idle environment (e.g., Green), where it is fully tested. Once verified, traffic is switched from the old environment (e.g., Blue) to the new one (Green).</p>
+      <ul><li><strong>✅ Example:</strong> Blue environment serves 100% of traffic. Green is updated and tested. Switch traffic to Green if tests pass.</li>
+      <li><strong>❌ Anti-pattern:</strong> Deploying to the live environment without a fallback, risking downtime and rollback complexity.</li></ul>
+      <strong>Pros:</strong><ul><li>👍🏻 Minimizes downtime</li><li>👍🏻 Enables quick rollback</li><li>👍🏻 Isolates issues in the inactive environment</li></ul>
+      <strong>Cons:</strong><ul><li>👎🏻 Requires double the resources</li><li>👎🏻 Can complicate network routing</li><li>👎🏻 May introduce latency during switch</li></ul>`
+  },
+  {
+    "id": "rolling",
+    "title": "Rolling Deployment",
+    "icon": "https://img.icons8.com/?size=100&id=37085&format=png&color=000000",
+    "description": "Gradually replaces instances of the previous version of an application with the new version, without downtime. Traffic is slowly shifted to the updated instances.",
+    "tags": ["Deployment", "Resiliency", "Architecture"],
+    "example": "Example: Updating a web application server by server, shifting traffic to each updated server in turn.",
+    "anti-pattern": "Anti-pattern: Updating all instances at once, risking downtime and rollback complexity.",
+    "pros": ["No downtime", "Gradual exposure of the new version", "Easier to identify issues"],
+    "cons": ["Longer deployment time", "Requires careful monitoring", "Can be complex to manage"],
+    "details": `<h2>Rolling Deployment</h2>
+      <p>Rolling Deployment is a strategy for updating applications with zero downtime by gradually replacing instances of the previous version with the new version. In this approach, traffic is slowly shifted from the old instances to the updated ones, allowing for continuous availability.</p>
+      <ul><li><strong>✅ Example:</strong> Updating a web application server by server, shifting traffic to each updated server in turn.</li>
+      <li><strong>❌ Anti-pattern:</strong> Updating all instances at once, risking downtime and rollback complexity.</li></ul>
+      <strong>Pros:</strong><ul><li>👍🏻 No downtime</li><li>👍🏻 Gradual exposure of the new version</li><li>👍🏻 Easier to identify issues</li></ul>
+      <strong>Cons:</strong><ul><li>👎🏻 Longer deployment time</li><li>👎🏻 Requires careful monitoring</li><li>👎🏻 Can be complex to manage</li></ul>`
   }
 ];
 
@@ -590,14 +983,79 @@
   }
 ];
 
-    function renderCards() {
+    let selectedTags = [];
+
+    function getAllTags() {
+      const allTags = new Set();
+      concepts.forEach(concept => {
+        if (concept.tags) {
+          concept.tags.forEach(tag => allTags.add(tag));
+        }
+      });
+      return Array.from(allTags).sort();
+    }
+
+    function renderFilterTags() {
+      const filterTagsContainer = document.getElementById('filter-tags');
+      const allTags = getAllTags();
+      
+      filterTagsContainer.innerHTML = allTags.map(tag => 
+        `<span class="filter-tag" onclick="toggleFilter('${tag}')">${tag}</span>`
+      ).join('') + '<button class="clear-filters" onclick="clearFilters()">Clear All</button>';
+    }
+
+    function toggleFilter(tag) {
+      if (selectedTags.includes(tag)) {
+        selectedTags = selectedTags.filter(t => t !== tag);
+      } else {
+        selectedTags.push(tag);
+      }
+      updateFilterUI();
+      renderFilteredCards();
+    }
+
+    function clearFilters() {
+      selectedTags = [];
+      updateFilterUI();
+      renderFilteredCards();
+    }
+
+    function updateFilterUI() {
+      const filterTags = document.querySelectorAll('.filter-tag');
+      filterTags.forEach(tag => {
+        const tagText = tag.textContent;
+        if (selectedTags.includes(tagText)) {
+          tag.classList.add('active');
+        } else {
+          tag.classList.remove('active');
+        }
+      });
+    }
+
+    function renderFilteredCards() {
       const container = document.getElementById('card-container');
-      container.innerHTML = concepts.map(c => `
+      let filteredConcepts = concepts;
+      
+      if (selectedTags.length > 0) {
+        filteredConcepts = concepts.filter(concept => {
+          if (!concept.tags) return false;
+          return selectedTags.some(selectedTag => concept.tags.includes(selectedTag));
+        });
+      }
+      
+      container.innerHTML = filteredConcepts.map(c => `
         <div class="card" onclick="showModal('${c.id}')">
           <img class="icon" src="${c.icon}" alt="${c.title}" />
           <div class="title">${c.title}</div>
           <div class="description">${c.description.replace(/\n/g, '<br>')}</div>
+          <div class="tags">
+            ${c.tags ? c.tags.map(tag => `<span class="tag">${tag}</span>`).join('') : ''}
+          </div>
         </div>`).join('');
+    }
+
+    function renderCards() {
+      renderFilteredCards();
     }
 
     function showSolidPrincipleModal(principleId) {
@@ -681,6 +1139,7 @@
       }
     }
 
+    renderFilterTags();
     renderCards();
   </script>
 </body>
