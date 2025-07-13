@@ -201,8 +201,8 @@
 </head>
 <body>
 <header>
-<h1>Software Engineering Concepts Infographics</h1>
-<p>A quick reference cheatsheet for essential software engineering concepts and principles</p>
+<h1>Software Engineering Cheatsheet</h1>
+<p>A quick reference cheatsheet containing essential software engineering concepts and principles</p>
 <nav>
   <a href="about.html" class="about-btn">👨🏻‍💻 About Me 🇸🇬</a>
 </nav>
@@ -795,7 +795,7 @@
   {
     "id": "bulkhead",
     "title": "Bulkhead Pattern",
-    "icon": "https://img.icons8.com/?size=100&id=37155&format=png&color=000000",
+    "icon": "https://img.icons8.com/?size=100&id=42628&format=png&color=000000",
     "description": "Isolates components or resources into separate partitions to prevent failures from cascading, improving system resiliency during deployment and operation.",
     "tags": ["Deployment", "Resiliency", "Architecture"],
     "example": "Example: Partitioning microservices so a failure in one does not affect others.",
@@ -876,9 +876,88 @@
       <li><strong>❌ Anti-pattern:</strong> Updating all instances at once, risking downtime and rollback complexity.</li></ul>
       <strong>Pros:</strong><ul><li>👍🏻 No downtime</li><li>👍🏻 Gradual exposure of the new version</li><li>👍🏻 Easier to identify issues</li></ul>
       <strong>Cons:</strong><ul><li>👎🏻 Longer deployment time</li><li>👎🏻 Requires careful monitoring</li><li>👎🏻 Can be complex to manage</li></ul>`
+  },
+  {
+    "id": "loadbalancing",
+    "title": "Load Balancing",
+    "icon": "https://img.icons8.com/?size=100&id=59368&format=png&color=000000",
+    "description": "Distributes incoming traffic across multiple servers to ensure reliability, availability, and optimal resource utilization.",
+    "tags": ["Scalability", "Availability", "Performance"],
+    "anti-pattern": "Anti-pattern: Directing all traffic to a single server, causing bottlenecks and downtime.",
+    "pros": ["Improves fault tolerance", "Enhances performance", "Enables zero-downtime deployments"],
+    "cons": ["Requires configuration and monitoring", "Can add network latency", "May need expensive hardware/software"],
+    "details": `<h2>Load Balancing</h2>
+      <p>Load balancing distributes incoming network traffic across multiple servers, ensuring no single server becomes overwhelmed. This improves reliability, availability, and performance.</p>
+      <ul><li><strong>✅ Example:</strong> A web application uses a load balancer to route requests to several backend servers.</li>
+      <li><strong>❌ Anti-pattern:</strong> Directing all traffic to a single server, causing bottlenecks and downtime.</li></ul>
+      <strong>Pros:</strong><ul><li>👍🏻 Improves fault tolerance</li><li>👍🏻 Enhances performance</li><li>👍🏻 Enables zero-downtime deployments</li></ul>
+      <strong>Cons:</strong><ul><li>👎🏻 Requires configuration and monitoring</li><li>👎🏻 Can add network latency</li><li>👎🏻 May need expensive hardware/software</li></ul>`
+  },
+  {
+    "id": "horizontalscaling",
+    "title": "Horizontal Scaling",
+    "icon": "https://img.icons8.com/?size=100&id=l23k2zzz4prh&format=png&color=000000",
+    "description": "Increases system capacity by adding more machines or instances, allowing the system to handle more load.",
+    "tags": ["Scalability", "Performance", "Availability"],
+    "anti-pattern": "Anti-pattern: Relying solely on vertical scaling, which has physical limits and single points of failure.",
+    "pros": ["Handles large workloads", "Improves fault tolerance", "Easier to scale out"],
+    "cons": ["Requires distributed coordination", "Can increase complexity", "May need stateless architecture"],
+    "details": `<h2>Horizontal Scaling</h2>
+      <p>Horizontal scaling (scaling out) means adding more machines or instances to increase capacity and handle more traffic.</p>
+      <ul><li><strong>✅ Example:</strong> Adding more web servers behind a load balancer.</li>
+      <li><strong>❌ Anti-pattern:</strong> Relying solely on vertical scaling, which has physical limits and single points of failure.</li></ul>
+      <strong>Pros:</strong><ul><li>👍🏻 Handles large workloads</li><li>👍🏻 Improves fault tolerance</li><li>👍🏻 Easier to scale out</li></ul>
+      <strong>Cons:</strong><ul><li>👎🏻 Requires distributed coordination</li><li>👎🏻 Can increase complexity</li><li>👎🏻 May need stateless architecture</li></ul>`
+  },
+  {
+    "id": "verticalscaling",
+    "title": "Vertical Scaling",
+    "icon": "https://img.icons8.com/?size=100&id=12370&format=png&color=000000",
+    "description": "Increases system capacity by adding more resources (CPU, RAM) to an existing machine, improving performance up to hardware limits.",
+    "tags": ["Scalability", "Performance"],
+    "anti-pattern": "Anti-pattern: Ignoring horizontal scaling, leading to single points of failure and limited growth.",
+    "pros": ["Simple to implement", "No need for distributed coordination", "Immediate performance boost"],
+    "cons": ["Limited by hardware", "Single point of failure", "Downtime during upgrades"],
+    "details": `<h2>Vertical Scaling</h2>
+      <p>Vertical scaling (scaling up) means increasing the resources of a single machine, such as adding more CPU or RAM.</p>
+      <ul><li><strong>✅ Example:</strong> Upgrading a server from 8GB to 32GB RAM.</li>
+      <li><strong>❌ Anti-pattern:</strong> Ignoring horizontal scaling, leading to single points of failure and limited growth.</li></ul>
+      <strong>Pros:</strong><ul><li>👍🏻 Simple to implement</li><li>👍🏻 No need for distributed coordination</li><li>👍🏻 Immediate performance boost</li></ul>
+      <strong>Cons:</strong><ul><li>👎🏻 Limited by hardware</li><li>👎🏻 Single point of failure</li><li>👎🏻 Downtime during upgrades</li></ul>`
+  },
+  {
+    "id": "partitioning",
+    "title": "Partitioning",
+    "icon": "https://img.icons8.com/?size=100&id=62471&format=png&color=000000",
+    "description": "Divides data or workload into distinct segments (partitions) to improve scalability, performance, and manageability.",
+    "tags": ["Scalability", "Data Management", "Performance"],
+    "anti-pattern": "Anti-pattern: Storing all data in a single database table, causing bottlenecks and slow queries.",
+    "pros": ["Improves query performance", "Enables parallel processing", "Simplifies management of large datasets"],
+    "cons": ["Requires careful partitioning strategy", "Can lead to uneven load", "Complexity in cross-partition queries"],
+    "details": `<h2>Partitioning</h2>
+      <p>Partitioning divides data or workload into distinct segments, allowing for parallel processing and improved scalability.</p>
+      <ul><li><strong>✅ Example:</strong> Sharding a database by user ID.</li>
+      <li><strong>❌ Anti-pattern:</strong> Storing all data in a single database table, causing bottlenecks and slow queries.</li></ul>
+      <strong>Pros:</strong><ul><li>👍🏻 Improves query performance</li><li>👍🏻 Enables parallel processing</li><li>👍🏻 Simplifies management of large datasets</li></ul>
+      <strong>Cons:</strong><ul><li>👎🏻 Requires careful partitioning strategy</li><li>👎🏻 Can lead to uneven load</li><li>👎🏻 Complexity in cross-partition queries</li></ul>`
+  },
+  {
+    "id": "readreplica",
+    "title": "Read Replica",
+    "icon": "https://img.icons8.com/?size=100&id=LShgeehAoj7d&format=png&color=000000",
+    "description": "Creates copies of a database for read-only queries, offloading traffic from the primary and improving scalability and availability.",
+    "tags": ["Scalability", "Data Management", "Availability"],
+    "anti-pattern": "Anti-pattern: Directing all reads and writes to a single database, causing performance bottlenecks.",
+    "pros": ["Improves read performance", "Reduces load on primary", "Enhances availability"],
+    "cons": ["Replication lag", "Eventual consistency", "Requires monitoring and failover handling"],
+    "details": `<h2>Read Replica</h2>
+      <p>Read replicas are copies of a database used for read-only queries, helping to scale out read operations and improve availability.</p>
+      <ul><li><strong>✅ Example:</strong> A web app routes read queries to replicas and write queries to the primary database.</li>
+      <li><strong>❌ Anti-pattern:</strong> Directing all reads and writes to a single database, causing performance bottlenecks.</li></ul>
+      <strong>Pros:</strong><ul><li>👍🏻 Improves read performance</li><li>👍🏻 Reduces load on primary</li><li>👍🏻 Enhances availability</li></ul>
+      <strong>Cons:</strong><ul><li>👎🏻 Replication lag</li><li>👎🏻 Eventual consistency</li><li>👎🏻 Requires monitoring and failover handling</li></ul>`
   }
 ];
-
     const solidPrinciples = [
   {
     id: "srp",
