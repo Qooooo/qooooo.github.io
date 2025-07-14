@@ -305,7 +305,7 @@
     "title": "CAP Theorem",
     "icon": "https://img.icons8.com/?size=100&id=12025&format=png&color=000000",
     "description": "In distributed systems, you can only guarantee two of: Consistency, Availability, Partition Tolerance. Example: CP system sacrifices availability during network partition.",
-    "tags": ["Data Management", "Scalability", "Concept"],
+    "tags": ["Data Management", "Distributed Systems", "Scalability", "Concept"],
     "anti-pattern": "Anti-pattern: Assuming a distributed system can guarantee all three properties at once.",
     "pros": ["Clarifies trade-offs in distributed systems", "Guides architecture decisions"],
     "cons": ["Can oversimplify real-world systems", "Not all systems fit neatly into CAP categories"],
@@ -956,6 +956,278 @@
       <li><strong>❌ Anti-pattern:</strong> Directing all reads and writes to a single database, causing performance bottlenecks.</li></ul>
       <strong>Pros:</strong><ul><li>👍🏻 Improves read performance</li><li>👍🏻 Reduces load on primary</li><li>👍🏻 Enhances availability</li></ul>
       <strong>Cons:</strong><ul><li>👎🏻 Replication lag</li><li>👎🏻 Eventual consistency</li><li>👎🏻 Requires monitoring and failover handling</li></ul>`
+  },
+  {
+    "id": "materializedview",
+    "title": "Materialized View",
+    "icon": "https://img.icons8.com/?size=100&id=11971&format=png&color=000000",
+    "description": "A database object that stores the result of a query physically, improving read performance for complex aggregations and joins.",
+    "tags": ["Data Management", "Performance", "Scalability"],
+    "anti-pattern": "Anti-pattern: Running expensive queries on live tables for every request, causing slow response times.",
+    "pros": ["Speeds up complex queries", "Reduces computation load", "Improves reporting performance"],
+    "cons": ["Requires refresh management", "Can use extra storage", "May serve stale data"],
+    "details": `<h2>Materialized View</h2>
+      <p>A materialized view stores the result of a query physically in the database, allowing fast access to precomputed data for reporting and analytics.</p>
+      <ul><li><strong>✅ Example:</strong> A sales dashboard uses a materialized view to quickly show aggregated sales data.</li>
+      <li><strong>❌ Anti-pattern:</strong> Running expensive queries on live tables for every request, causing slow response times.</li></ul>
+      <strong>Pros:</strong><ul><li>👍🏻 Speeds up complex queries</li><li>👍🏻 Reduces computation load</li><li>👍🏻 Improves reporting performance</li></ul>
+      <strong>Cons:</strong><ul><li>👎🏻 Requires refresh management</li><li>👎🏻 Can use extra storage</li><li>👎🏻 May serve stale data</li></ul>`
+  },
+  {
+    "id": "cacheaside",
+    "title": "Cache Aside (Lazy Loading)",
+    "icon": "https://img.icons8.com/?size=100&id=rHswj2ZJRFLf&format=png&color=000000",
+    "description": "A caching pattern where the application loads data into the cache only when needed, and updates the cache after reading from the database.",
+    "tags": ["Data Management", "Performance", "Caching"],
+    "anti-pattern": "Anti-pattern: Preloading all data into cache, causing memory waste and slow startup.",
+    "pros": ["Efficient memory usage", "Reduces database load", "Simple to implement"],
+    "cons": ["Cache misses cause database hits", "May serve stale data", "Requires cache eviction strategy"],
+    "details": `<h2>Cache Aside (Lazy Loading)</h2>
+      <p>Cache Aside (Lazy Loading) loads data into the cache only when requested. If the data is not in the cache, it is fetched from the database and then stored in the cache for future requests.</p>
+      <ul><li><strong>✅ Example:</strong> A web app checks the cache for user profile data, loads from DB if missing, and stores it in cache.</li>
+      <li><strong>❌ Anti-pattern:</strong> Preloading all data into cache, causing memory waste and slow startup.</li></ul>
+      <strong>Pros:</strong><ul><li>👍🏻 Efficient memory usage</li><li>👍🏻 Reduces database load</li><li>👍🏻 Simple to implement</li></ul>
+      <strong>Cons:</strong><ul><li>👎🏻 Cache misses cause database hits</li><li>👎🏻 May serve stale data</li><li>👎🏻 Requires cache eviction strategy</li></ul>`
+  },
+  {
+    "id": "writethroughwritebehind",
+    "title": "Write Through / Write Behind Cache",
+    "icon": "https://img.icons8.com/?size=100&id=13450&format=png&color=000000",
+    "description": "Caching patterns for synchronizing data between cache and database: Write Through updates both cache and DB immediately; Write Behind updates cache first and DB asynchronously.",
+    "tags": ["Data Management", "Performance", "Caching"],
+    "anti-pattern": "Anti-pattern: Updating only the cache, risking data loss if cache fails.",
+    "pros": ["Improves write performance", "Reduces DB load", "Ensures data consistency (Write Through)"],
+    "cons": ["Write Behind risks data loss on crash", "Write Through can slow writes", "Requires careful sync logic"],
+    "details": `<h2>Write Through / Write Behind Cache</h2>
+      <p>Write Through updates both cache and database synchronously, ensuring consistency. Write Behind updates cache first and writes to the database asynchronously, improving performance but risking data loss if the cache fails before DB update.</p>
+      <ul><li><strong>✅ Example:</strong> Shopping cart updates are written to cache and DB (Write Through), or to cache and then DB later (Write Behind).</li>
+      <li><strong>❌ Anti-pattern:</strong> Updating only the cache, risking data loss if cache fails.</li></ul>
+      <strong>Pros:</strong><ul><li>👍🏻 Improves write performance</li><li>👍🏻 Reduces DB load</li><li>👍🏻 Ensures data consistency (Write Through)</li></ul>
+      <strong>Cons:</strong><ul><li>👎🏻 Write Behind risks data loss on crash</li><li>👎🏻 Write Through can slow writes</li><li>👎🏻 Requires careful sync logic</li></ul>`
+  },
+  {
+    "id": "sharding",
+    "title": "Sharding",
+    "icon": "https://img.icons8.com/?size=100&id=IN2OpET0Rs0Z&format=png&color=000000",
+    "description": "Splits a database into smaller, independent pieces (shards) to improve scalability and performance for large datasets.",
+    "tags": ["Data Management", "Scalability", "Performance"],
+    "anti-pattern": "Anti-pattern: Storing all data in a single database, causing bottlenecks and slow queries.",
+    "pros": ["Enables horizontal scaling", "Improves query performance", "Reduces single points of failure"],
+    "cons": ["Complex cross-shard queries", "Requires careful shard key selection", "Can lead to uneven load"],
+    "details": `<h2>Sharding</h2>
+      <p>Sharding splits a database into smaller, independent pieces, each responsible for a subset of the data. This allows for horizontal scaling and improved performance for large datasets.</p>
+      <ul><li><strong>✅ Example:</strong> User data is sharded by region, with each shard handling a specific region's users.</li>
+      <li><strong>❌ Anti-pattern:</strong> Storing all data in a single database, causing bottlenecks and slow queries.</li></ul>
+      <strong>Pros:</strong><ul><li>👍🏻 Enables horizontal scaling</li><li>👍🏻 Improves query performance</li><li>👍🏻 Reduces single points of failure</li></ul>
+      <strong>Cons:</strong><ul><li>👎🏻 Complex cross-shard queries</li><li>👎🏻 Requires careful shard key selection</li><li>👎🏻 Can lead to uneven load</li></ul>`
+  },
+  {
+    "id": "saga",
+    "title": "SAGA",
+    "icon": "https://img.icons8.com/?size=100&id=13562&format=png&color=000000",
+    "description": "A pattern for managing distributed transactions by breaking them into a series of smaller, compensatable steps, ensuring eventual consistency across services.",
+    "tags": ["Data Management", "Resiliency", "Distributed Systems"],
+    "anti-pattern": "Anti-pattern: Using a single, global transaction across microservices, risking lock contention and poor scalability.",
+    "pros": ["Enables distributed transactions", "Improves resiliency", "Supports eventual consistency"],
+    "cons": ["Requires compensation logic", "Can be complex to implement", "May need orchestration"],
+    "details": `<h2>SAGA</h2>
+      <p>SAGA manages distributed transactions by breaking them into a series of smaller steps, each with a compensating action in case of failure. This ensures eventual consistency across services without locking resources globally.</p>
+      <ul><li><strong>✅ Example:</strong> An order service reserves inventory, payment service charges customer, and shipping service ships product. If payment fails, inventory reservation is canceled.</li>
+      <li><strong>❌ Anti-pattern:</strong> Using a single, global transaction across microservices, risking lock contention and poor scalability.</li></ul>
+      <strong>Pros:</strong><ul><li>👍🏻 Enables distributed transactions</li><li>👍🏻 Improves resiliency</li><li>👍🏻 Supports eventual consistency</li></ul>
+      <strong>Cons:</strong><ul><li>👎🏻 Requires compensation logic</li><li>👎🏻 Can be complex to implement</li><li>👎🏻 May need orchestration</li></ul>`
+  },
+  {
+    "id": "outboxpattern",
+    "title": "Outbox Pattern",
+    "icon": "https://img.icons8.com/?size=100&id=11966&format=png&color=000000",
+    "description": "Ensures reliable message delivery in distributed systems by storing messages in a database outbox table, then publishing them to a message broker asynchronously.",
+    "tags": ["Data Management", "Reliability", "Distributed Systems"],
+    "anti-pattern": "Anti-pattern: Publishing messages directly to a broker before confirming database commit, risking lost messages on failure.",
+    "pros": ["Guarantees message delivery", "Improves reliability", "Decouples database and messaging"],
+    "cons": ["Requires outbox cleanup", "Adds operational complexity", "May introduce delivery latency"],
+    "details": `<h2>Outbox Pattern</h2>
+      <p>The Outbox Pattern stores messages in a database outbox table as part of the main transaction, then publishes them to a message broker asynchronously. This ensures reliable delivery even if failures occur after the database commit.</p>
+      <ul><li><strong>✅ Example:</strong> An order service writes an event to the outbox table when an order is created, and a background process publishes it to Kafka.</li>
+      <li><strong>❌ Anti-pattern:</strong> Publishing messages directly to a broker before confirming database commit, risking lost messages on failure.</li></ul>
+      <strong>Pros:</strong><ul><li>👍🏻 Guarantees message delivery</li><li>👍🏻 Improves reliability</li><li>👍🏻 Decouples database and messaging</li></ul>
+      <strong>Cons:</strong><ul><li>👎🏻 Requires outbox cleanup</li><li>👎🏻 Adds operational complexity</li><li>👎🏻 May introduce delivery latency</li></ul>`
+  },
+  {
+    "id": "jwt",
+    "title": "JSON Web Token (JWT)",
+    "icon": "https://img.icons8.com/?size=100&id=rHpveptSuwDz&format=png&color=000000",
+    "description": "A compact, URL-safe token format for securely transmitting claims between parties, commonly used for authentication and authorization.",
+    "tags": ["Security", "Authentication", "Authorization"],
+    "anti-pattern": "Anti-pattern: Storing sensitive data in JWT payloads, risking exposure if tokens are leaked.",
+    "pros": ["Stateless authentication", "Easy to use across domains", "Supports claims and expiry"],
+    "cons": ["Can be large if overloaded", "No built-in revocation", "Requires secure storage of signing keys"],
+    "details": `<h2>JSON Web Token (JWT)</h2>
+      <p>JWT is a compact, URL-safe token format for securely transmitting claims between parties. Commonly used for authentication and authorization in web APIs.</p>
+      <ul><li><strong>✅ Example:</strong> A user logs in and receives a JWT, which is sent with each API request for authentication.</li>
+      <li><strong>❌ Anti-pattern:</strong> Storing sensitive data in JWT payloads, risking exposure if tokens are leaked.</li></ul>
+      <strong>Pros:</strong><ul><li>👍🏻 Stateless authentication</li><li>👍🏻 Easy to use across domains</li><li>👍🏻 Supports claims and expiry</li></ul>
+      <strong>Cons:</strong><ul><li>👎🏻 Can be large if overloaded</li><li>👎🏻 No built-in revocation</li><li>👎🏻 Requires secure storage of signing keys</li></ul>`
+  },
+  {
+    "id": "oauth2oidc",
+    "title": "OAuth2 / OpenID Connect",
+    "icon": "https://img.icons8.com/?size=100&id=16204&format=png&color=000000",
+    "description": "Protocols for secure delegated access and identity verification, enabling single sign-on and third-party integrations.",
+    "tags": ["Security", "Authentication", "Authorization"],
+    "anti-pattern": "Anti-pattern: Storing client secrets in client-side code, risking compromise.",
+    "pros": ["Enables SSO", "Supports delegated access", "Widely adopted"],
+    "cons": ["Complex to implement", "Requires secure redirect handling", "Can be misconfigured"],
+    "details": `<h2>OAuth2 / OpenID Connect</h2>
+      <p>OAuth2 is a protocol for secure delegated access, and OpenID Connect adds identity verification. Used for single sign-on and third-party integrations.</p>
+      <ul><li><strong>✅ Example:</strong> Logging in with Google or Microsoft using OAuth2/OpenID Connect.</li>
+      <li><strong>❌ Anti-pattern:</strong> Storing client secrets in client-side code, risking compromise.</li></ul>
+      <strong>Pros:</strong><ul><li>👍🏻 Enables SSO</li><li>👍🏻 Supports delegated access</li><li>👍🏻 Widely adopted</li></ul>
+      <strong>Cons:</strong><ul><li>👎🏻 Complex to implement</li><li>👎🏻 Requires secure redirect handling</li><li>👎🏻 Can be misconfigured</li></ul>`
+  },
+  {
+    "id": "apikeyhmac",
+    "title": "API Key / HMAC",
+    "icon": "https://img.icons8.com/?size=100&id=tSezB7-DjBSW&format=png&color=000000",
+    "description": "Simple authentication methods for APIs: API Key is a shared secret; HMAC uses a hash-based message authentication code for request signing.",
+    "tags": ["Security", "Authentication", "API"],
+    "anti-pattern": "Anti-pattern: Hardcoding API keys in public repositories, risking exposure.",
+    "pros": ["Simple to implement", "Works for server-to-server", "HMAC prevents tampering"],
+    "cons": ["API keys can be leaked", "No user context", "Limited granularity"],
+    "details": `<h2>API Key / HMAC</h2>
+      <p>API Key is a shared secret for authenticating API requests. HMAC uses a hash-based message authentication code to sign requests, preventing tampering.</p>
+      <ul><li><strong>✅ Example:</strong> A service sends requests with an API key or HMAC signature in the header.</li>
+      <li><strong>❌ Anti-pattern:</strong> Hardcoding API keys in public repositories, risking exposure.</li></ul>
+      <strong>Pros:</strong><ul><li>👍🏻 Simple to implement</li><li>👍🏻 Works for server-to-server</li><li>👍🏻 HMAC prevents tampering</li></ul>
+      <strong>Cons:</strong><ul><li>👎🏻 API keys can be leaked</li><li>👎🏻 No user context</li><li>👎🏻 Limited granularity</li></ul>`
+  },
+  {
+    "id": "ratelimiting",
+    "title": "Rate Limiting",
+    "icon": "https://img.icons8.com/?size=100&id=63717&format=png&color=000000",
+    "description": "Controls the number of requests a client can make in a given time period, protecting APIs from abuse and denial-of-service attacks.",
+    "tags": ["Security", "API", "Resiliency"],
+    "anti-pattern": "Anti-pattern: No rate limits, allowing unlimited requests and risking service outages.",
+    "pros": ["Prevents abuse", "Protects resources", "Improves reliability"],
+    "cons": ["Can block legitimate users", "Requires tracking and enforcement", "May add latency"],
+    "details": `<h2>Rate Limiting</h2>
+      <p>Rate limiting controls the number of requests a client can make in a given time period, protecting APIs from abuse and denial-of-service attacks.</p>
+      <ul><li><strong>✅ Example:</strong> An API allows 100 requests per minute per user.</li>
+      <li><strong>❌ Anti-pattern:</strong> No rate limits, allowing unlimited requests and risking service outages.</li></ul>
+      <strong>Pros:</strong><ul><li>👍🏻 Prevents abuse</li><li>👍🏻 Protects resources</li><li>👍🏻 Improves reliability</li></ul>
+      <strong>Cons:</strong><ul><li>👎🏻 Can block legitimate users</li><li>👎🏻 Requires tracking and enforcement</li><li>👎🏻 May add latency</li></ul>`
+  },
+  {
+    "id": "encryption",
+    "title": "Encryption (At Rest / In-Transit)",
+    "icon": "https://img.icons8.com/?size=100&id=16232&format=png&color=000000",
+    "description": "Protects data by encoding it so only authorized parties can access it, both when stored (at rest) and during transmission (in-transit).",
+    "tags": ["Security", "Data Management", "Compliance"],
+    "anti-pattern": "Anti-pattern: Storing sensitive data unencrypted, risking data breaches.",
+    "pros": ["Protects confidentiality", "Meets compliance requirements", "Prevents eavesdropping"],
+    "cons": ["Can impact performance", "Requires key management", "May complicate integration"],
+    "details": `<h2>Encryption (At Rest / In-Transit)</h2>
+      <p>Encryption encodes data so only authorized parties can access it, protecting data both when stored and during transmission.</p>
+      <ul><li><strong>✅ Example:</strong> Using HTTPS for web traffic and encrypting database files at rest.</li>
+      <li><strong>❌ Anti-pattern:</strong> Storing sensitive data unencrypted, risking data breaches.</li></ul>
+      <strong>Pros:</strong><ul><li>👍🏻 Protects confidentiality</li><li>👍🏻 Meets compliance requirements</li><li>👍🏻 Prevents eavesdropping</li></ul>
+      <strong>Cons:</strong><ul><li>👎🏻 Can impact performance</li><li>👎🏻 Requires key management</li><li>👎🏻 May complicate integration</li></ul>`
+  },
+  {
+    "id": "zerotrust",
+    "title": "Zero Trust",
+    "icon": "https://img.icons8.com/?size=100&id=103936&format=png&color=000000",
+    "description": "A security model that assumes no user or device is trusted by default, requiring continuous verification and least-privilege access.",
+    "tags": ["Security", "Architecture", "Compliance"],
+    "anti-pattern": "Anti-pattern: Trusting internal network traffic by default, risking lateral movement in breaches.",
+    "pros": ["Reduces attack surface", "Improves compliance", "Enforces least privilege"],
+    "cons": ["Can add operational complexity", "Requires strong identity management", "May impact user experience"],
+    "details": `<h2>Zero Trust</h2>
+      <p>Zero Trust is a security model that assumes no user or device is trusted by default, requiring continuous verification and least-privilege access.</p>
+      <ul><li><strong>✅ Example:</strong> Every request is authenticated and authorized, regardless of network location.</li>
+      <li><strong>❌ Anti-pattern:</strong> Trusting internal network traffic by default, risking lateral movement in breaches.</li></ul>
+      <strong>Pros:</strong><ul><li>👍🏻 Reduces attack surface</li><li>👍🏻 Improves compliance</li><li>👍🏻 Enforces least privilege</li></ul>
+      <strong>Cons:</strong><ul><li>👎🏻 Can add operational complexity</li><li>👎🏻 Requires strong identity management</li><li>👎🏻 May impact user experience</li></ul>`
+  },
+  {
+    "id": "retry",
+    "title": "Retry",
+    "icon": "https://img.icons8.com/?size=100&id=63815&format=png&color=000000",
+    "description": "Automatically re-attempts failed operations to handle transient errors and improve reliability.",
+    "tags": ["Resiliency", "Reliability", "Error Handling"],
+    "anti-pattern": "Anti-pattern: Infinite retries without backoff, causing resource exhaustion.",
+    "pros": ["Handles transient failures", "Improves reliability", "Simple to implement"],
+    "cons": ["Can cause delays", "May overload systems", "Needs backoff strategy"],
+    "details": `<h2>Retry</h2>
+      <p>Retry automatically re-attempts failed operations to handle transient errors and improve reliability. Common in network and database calls.</p>
+      <ul><li><strong>✅ Example:</strong> Retrying a failed HTTP request up to 3 times with exponential backoff.</li>
+      <li><strong>❌ Anti-pattern:</strong> Infinite retries without backoff, causing resource exhaustion.</li></ul>
+      <strong>Pros:</strong><ul><li>👍🏻 Handles transient failures</li><li>👍🏻 Improves reliability</li><li>👍🏻 Simple to implement</li></ul>
+      <strong>Cons:</strong><ul><li>👎🏻 Can cause delays</li><li>👎🏻 May overload systems</li><li>👎🏻 Needs backoff strategy</li></ul>`
+  },
+  {
+    "id": "circuitbreaker",
+    "title": "Circuit Breaker",
+    "icon": "https://img.icons8.com/?size=100&id=110292&format=png&color=000000",
+    "description": "Prevents repeated failures by stopping calls to a failing service and allowing it to recover before retrying.",
+    "tags": ["Resiliency", "Reliability", "Error Handling"],
+    "anti-pattern": "Anti-pattern: No circuit breaker, causing cascading failures and slow recovery.",
+    "pros": ["Prevents cascading failures", "Improves recovery", "Protects resources"],
+    "cons": ["Can block legitimate requests", "Requires tuning", "Adds complexity"],
+    "details": `<h2>Circuit Breaker</h2>
+      <p>Circuit Breaker stops calls to a failing service, allowing it to recover before retrying. Protects systems from repeated failures.</p>
+      <ul><li><strong>✅ Example:</strong> After 5 consecutive failures, block requests for 30 seconds before retrying.</li>
+      <li><strong>❌ Anti-pattern:</strong> No circuit breaker, causing cascading failures and slow recovery.</li></ul>
+      <strong>Pros:</strong><ul><li>👍🏻 Prevents cascading failures</li><li>👍🏻 Improves recovery</li><li>👍🏻 Protects resources</li></ul>
+      <strong>Cons:</strong><ul><li>👎🏻 Can block legitimate requests</li><li>👎🏻 Requires tuning</li><li>👎🏻 Adds complexity</li></ul>`
+  },
+  {
+    "id": "timeout",
+    "title": "Timeout",
+    "icon": "https://img.icons8.com/?size=100&id=45483&format=png&color=000000",
+    "description": "Limits how long an operation can run, preventing resource hogging and improving system responsiveness.",
+    "tags": ["Resiliency", "Reliability", "Performance"],
+    "anti-pattern": "Anti-pattern: No timeouts, causing requests to hang indefinitely and degrade performance.",
+    "pros": ["Prevents resource hogging", "Improves responsiveness", "Simplifies error handling"],
+    "cons": ["Can cause incomplete operations", "Needs careful tuning", "May frustrate users"],
+    "details": `<h2>Timeout</h2>
+      <p>Timeout limits how long an operation can run, preventing resource hogging and improving system responsiveness.</p>
+      <ul><li><strong>✅ Example:</strong> Setting a 5-second timeout for database queries.</li>
+      <li><strong>❌ Anti-pattern:</strong> No timeouts, causing requests to hang indefinitely and degrade performance.</li></ul>
+      <strong>Pros:</strong><ul><li>👍🏻 Prevents resource hogging</li><li>👍🏻 Improves responsiveness</li><li>👍🏻 Simplifies error handling</li></ul>
+      <strong>Cons:</strong><ul><li>👎🏻 Can cause incomplete operations</li><li>👎🏻 Needs careful tuning</li><li>👎🏻 May frustrate users</li></ul>`
+  },
+  {
+    "id": "failover",
+    "title": "Failover",
+    "icon": "https://img.icons8.com/?size=100&id=107437&format=png&color=000000",
+    "description": "Automatically switches to a backup system or resource when the primary fails, ensuring high availability.",
+    "tags": ["Resiliency", "Availability", "Reliability"],
+    "anti-pattern": "Anti-pattern: No failover, causing complete outages when a component fails.",
+    "pros": ["Ensures high availability", "Minimizes downtime", "Improves reliability"],
+    "cons": ["Requires extra resources", "Can add complexity", "Needs regular testing"],
+    "details": `<h2>Failover</h2>
+      <p>Failover automatically switches to a backup system or resource when the primary fails, ensuring high availability.</p>
+      <ul><li><strong>✅ Example:</strong> Switching to a standby database if the primary goes down.</li>
+      <li><strong>❌ Anti-pattern:</strong> No failover, causing complete outages when a component fails.</li></ul>
+      <strong>Pros:</strong><ul><li>👍🏻 Ensures high availability</li><li>👍🏻 Minimizes downtime</li><li>👍🏻 Improves reliability</li></ul>
+      <strong>Cons:</strong><ul><li>👎🏻 Requires extra resources</li><li>👎🏻 Can add complexity</li><li>👎🏻 Needs regular testing</li></ul>`
+  },
+  {
+    "id": "healthcheck",
+    "title": "Health Check",
+    "icon": "https://img.icons8.com/?size=100&id=19625&format=png&color=000000",
+    "description": "Monitors the status of system components, enabling detection of failures and proactive maintenance.",
+    "tags": ["Resiliency", "Monitoring", "Reliability"],
+    "anti-pattern": "Anti-pattern: No health checks, leading to undetected failures and slow recovery.",
+    "pros": ["Detects failures early", "Enables proactive maintenance", "Improves reliability"],
+    "cons": ["Requires monitoring infrastructure", "Can add overhead", "Needs regular review"],
+    "details": `<h2>Health Check</h2>
+      <p>Health Check monitors the status of system components, enabling detection of failures and proactive maintenance.</p>
+      <ul><li><strong>✅ Example:</strong> Periodically checking if a web server is responding to requests.</li>
+      <li><strong>❌ Anti-pattern:</strong> No health checks, leading to undetected failures and slow recovery.</li></ul>
+      <strong>Pros:</strong><ul><li>👍🏻 Detects failures early</li><li>👍🏻 Enables proactive maintenance</li><li>👍🏻 Improves reliability</li></ul>
+      <strong>Cons:</strong><ul><li>👎🏻 Requires monitoring infrastructure</li><li>👎🏻 Can add overhead</li><li>👎🏻 Needs regular review</li></ul>`
   }
 ];
     const solidPrinciples = [
