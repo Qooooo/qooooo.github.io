@@ -105,10 +105,44 @@
         font-weight: 500;
         border: 1px solid rgba(25, 118, 210, 0.2);
       }
+      .search-container {
+        background: white;
+        padding: 1.5rem 2rem;
+        margin: 2rem auto 1rem auto;
+        max-width: 1200px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      }
+      .search-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #1e2a38;
+        margin-bottom: 1rem;
+        text-align: center;
+      }
+      .search-input {
+        width: 100%;
+        padding: 0.8rem 1rem;
+        border: 2px solid #e0e0e0;
+        border-radius: 25px;
+        font-size: 1rem;
+        font-family: inherit;
+        outline: none;
+        transition: all 0.3s ease;
+        background: #f8f9fa;
+      }
+      .search-input:focus {
+        border-color: #3289c6;
+        background: white;
+        box-shadow: 0 0 0 3px rgba(50, 137, 198, 0.1);
+      }
+      .search-input::placeholder {
+        color: #999;
+      }
       .filter-container {
         background: white;
         padding: 1.5rem 2rem;
-        margin: 2rem auto;
+        margin: 1rem auto 2rem auto;
         max-width: 1200px;
         border-radius: 12px;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
@@ -207,6 +241,11 @@
   <a href="about.html" class="about-btn">👨🏻‍💻 About Me 🇸🇬</a>
 </nav>
 </header>
+
+<div class="search-container">
+  <div class="search-title">Search Topics</div>
+  <input type="text" class="search-input" id="search-input" placeholder="Search for topics by name or description...">
+</div>
 
 <div class="filter-container">
   <div class="filter-title">Filter by Topics</div>
@@ -1228,8 +1267,41 @@
       <li><strong>❌ Anti-pattern:</strong> No health checks, leading to undetected failures and slow recovery.</li></ul>
       <strong>Pros:</strong><ul><li>👍🏻 Detects failures early</li><li>👍🏻 Enables proactive maintenance</li><li>👍🏻 Improves reliability</li></ul>
       <strong>Cons:</strong><ul><li>👎🏻 Requires monitoring infrastructure</li><li>👎🏻 Can add overhead</li><li>👎🏻 Needs regular review</li></ul>`
+  },
+  {
+    "id": "databaseindexing",
+    "title": "Database Indexing",
+    "icon": "https://img.icons8.com/?size=100&id=18724&format=png&color=000000",
+    "description": "A data structure that improves the speed of data retrieval operations on a database table at the cost of additional storage and write overhead.",
+    "tags": ["Data Management", "Performance", "Database"],
+    "anti-pattern": "Anti-pattern: Over-indexing every column, causing slow writes and wasted storage.",
+    "pros": ["Speeds up queries", "Enables efficient lookups", "Improves performance for large datasets"],
+    "cons": ["Slows down writes", "Consumes extra storage", "Requires maintenance"],
+    "details": `<h2>Database Indexing</h2>
+      <p>Database indexes are data structures (like B-trees or hash tables) that allow fast retrieval of rows based on key values.</p>
+      <ul><li><strong>✅ Example:</strong> Adding an index to the 'email' column in a users table for fast lookups.</li>
+      <li><strong>❌ Anti-pattern:</strong> Over-indexing every column, causing slow writes and wasted storage.</li></ul>
+      <strong>Pros:</strong><ul><li>👍🏻 Speeds up queries</li><li>👍🏻 Enables efficient lookups</li><li>👍🏻 Improves performance for large datasets</li></ul>
+      <strong>Cons:</strong><ul><li>👎🏻 Slows down writes</li><li>👎🏻 Consumes extra storage</li><li>👎🏻 Requires maintenance</li></ul>`
+  },
+  {
+    "id": "acid",
+    "title": "ACID Properties",
+    "icon": "https://img.icons8.com/?size=100&id=13406&format=png&color=000000",
+    "description": "A set of properties (Atomicity, Consistency, Isolation, Durability) that guarantee reliable processing of database transactions.",
+    "tags": ["Data Management", "Database", "Reliability"],
+    "anti-pattern": "Anti-pattern: Ignoring ACID, leading to data corruption or inconsistent state.",
+    "pros": ["Ensures data integrity", "Prevents corruption", "Supports reliable transactions"],
+    "cons": ["Can reduce performance", "May add complexity", "Not always needed for all workloads"],
+    "details": `<h2>ACID Properties</h2>
+      <p>ACID stands for <a href='#' onclick=\"showACIDSubtopicModal('atomicity');return false;\">Atomicity</a>, <a href='#' onclick=\"showACIDSubtopicModal('consistency');return false;\">Consistency</a>, <a href='#' onclick=\"showACIDSubtopicModal('isolation');return false;\">Isolation</a>, and <a href='#' onclick=\"showACIDSubtopicModal('durability');return false;\">Durability</a>. These properties guarantee reliable database transactions.</p>
+      <ul><li><strong>✅ Example:</strong> A bank transfer either debits and credits both accounts or neither (atomicity).</li>
+      <li><strong>❌ Anti-pattern:</strong> Ignoring ACID, leading to data corruption or inconsistent state.</li></ul>
+      <strong>Pros:</strong><ul><li>👍🏻 Ensures data integrity</li><li>👍🏻 Prevents corruption</li><li>👍🏻 Supports reliable transactions</li></ul>
+      <strong>Cons:</strong><ul><li>👎🏻 Can reduce performance</li><li>👎🏻 May add complexity</li><li>👎🏻 Not always needed for all workloads</li></ul>`
   }
 ];
+
     const solidPrinciples = [
   {
     id: "srp",
@@ -1336,6 +1408,7 @@
 ];
 
     let selectedTags = [];
+    let searchQuery = '';
 
     function getAllTags() {
       const allTags = new Set();
@@ -1345,6 +1418,24 @@
         }
       });
       return Array.from(allTags).sort();
+    }
+
+    function setupSearch() {
+      const searchInput = document.getElementById('search-input');
+      searchInput.addEventListener('input', function(e) {
+        searchQuery = e.target.value.toLowerCase().trim();
+        renderFilteredCards();
+      });
+    }
+
+    function matchesSearch(concept) {
+      if (!searchQuery) return true;
+      
+      // Search in title and description
+      const titleMatch = concept.title.toLowerCase().includes(searchQuery);
+      const descriptionMatch = concept.description.toLowerCase().includes(searchQuery);
+      
+      return titleMatch || descriptionMatch;
     }
 
     function renderFilterTags() {
@@ -1368,6 +1459,8 @@
 
     function clearFilters() {
       selectedTags = [];
+      searchQuery = '';
+      document.getElementById('search-input').value = '';
       updateFilterUI();
       renderFilteredCards();
     }
@@ -1388,11 +1481,28 @@
       const container = document.getElementById('card-container');
       let filteredConcepts = concepts;
       
+      // Apply search filter
+      if (searchQuery) {
+        filteredConcepts = filteredConcepts.filter(concept => matchesSearch(concept));
+      }
+      
+      // Apply tag filter
       if (selectedTags.length > 0) {
-        filteredConcepts = concepts.filter(concept => {
+        filteredConcepts = filteredConcepts.filter(concept => {
           if (!concept.tags) return false;
           return selectedTags.some(selectedTag => concept.tags.includes(selectedTag));
         });
+      }
+      
+      // Show message if no results
+      if (filteredConcepts.length === 0) {
+        container.innerHTML = `
+          <div style="grid-column: 1 / -1; text-align: center; padding: 2rem; color: #666;">
+            <h3>No topics found</h3>
+            <p>Try adjusting your search terms or filters.</p>
+          </div>
+        `;
+        return;
       }
       
       container.innerHTML = filteredConcepts.map(c => `
@@ -1437,6 +1547,51 @@
       <strong>Pros:</strong><ul>${s.pros.map(pr => `<li>👍🏻 ${pr}</li>`).join('')}</ul>
       <strong>Cons:</strong><ul>${s.cons.map(co => `<li>👎🏻 ${co}</li>`).join('')}</ul>
       <button onclick=\"showModal('domaindrivendesignddd')\">Back to DDD</button>
+    `;
+    modal.style.display = 'flex';
+  }
+}
+
+    function showACIDSubtopicModal(subId) {
+  const acidSubtopics = {
+    atomicity: {
+      title: 'Atomicity',
+      description: 'Ensures that a transaction is all-or-nothing: either all operations succeed, or none do. No partial results are left in the database.',
+      example: 'Transferring money between accounts: both debit and credit must succeed, or neither happens.',
+      pros: ['Prevents partial updates', 'Maintains data integrity'],
+      cons: ['May require rollback mechanisms']
+    },
+    consistency: {
+      title: 'Consistency',
+      description: 'Ensures that a transaction brings the database from one valid state to another, maintaining all defined rules and constraints.',
+      example: 'A transaction cannot violate a unique constraint or foreign key.',
+      pros: ['Enforces business rules', 'Prevents invalid data'],
+      cons: ['Can add complexity to schema design']
+    },
+    isolation: {
+      title: 'Isolation',
+      description: 'Ensures that concurrent transactions do not interfere with each other. Intermediate states are invisible to other transactions.',
+      example: 'Two users updating the same record do not see each other’s changes until committed.',
+      pros: ['Prevents dirty reads', 'Supports concurrency'],
+      cons: ['Can reduce performance due to locking']
+    },
+    durability: {
+      title: 'Durability',
+      description: 'Ensures that once a transaction is committed, its results are permanent, even in the event of a system failure.',
+      example: 'After a successful transfer, the result remains even if the server crashes immediately after.',
+      pros: ['Protects against data loss', 'Ensures reliability'],
+      cons: ['May require write-ahead logging or replication']
+    }
+  };
+  const s = acidSubtopics[subId];
+  if (s) {
+    modalBody.innerHTML = `
+      <h2>${s.title}</h2>
+      <p>${s.description}</p>
+      <ul><li><strong>✅ Example:</strong> ${s.example}</li></ul>
+      <strong>Pros:</strong><ul>${s.pros.map(pr => `<li>👍🏻 ${pr}</li>`).join('')}</ul>
+      <strong>Cons:</strong><ul>${s.cons.map(co => `<li>👎🏻 ${co}</li>`).join('')}</ul>
+      <button onclick=\"showModal('acid')\">Back to ACID</button>
     `;
     modal.style.display = 'flex';
   }
@@ -1493,6 +1648,7 @@
 
     renderFilterTags();
     renderCards();
+    setupSearch();
   </script>
 </body>
 </html>
